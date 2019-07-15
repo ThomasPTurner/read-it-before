@@ -20,9 +20,10 @@ class ArticleCard extends Component {
     }
     
     fetchArticleById = async (id) => {
-        const article = await API.getArticleById(id)
-        console.log(article)
-        return article
+        const { article } = await API.getArticleById(id)
+        this.setState({
+            article
+        })
     }
 }
 

@@ -1,21 +1,24 @@
 import axios from 'axios'
 
-const URL = 'https://readitbefore.herokuapp.com/api'
+const baseURL = 'https://readitbefore.herokuapp.com/api'
 
 const getTopics = async () => {
-    const { data: { topics } } = await axios.get(`${URL}/topics`)
+    const { data: { topics } } = await axios.get(`${baseURL}/topics`)
     return topics
 }
 
 const getArticles = async (config = {}) => {
-    const { data: { articles } } = await axios.get(`${URL}/articles`, config)
-    return articles
+    const res = await axios.get({ 
+        baseURL,
+        URL: '/articles',
+        ...config})
+        console.log(res)
+    return res.data
 }
 
-const getArticleById = async (config = {}) => {
-    const { data: { article } } = await axios.get(`${URL}/articles/`, config)
-    console.log(article)
-    return article
+const getArticleById = async (id) => {
+    const { data } = await axios.get(`${baseURL}/articles/${id}`)
+    return data
 }
 
 export default { getTopics, getArticles, getArticleById }

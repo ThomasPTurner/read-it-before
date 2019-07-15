@@ -22,7 +22,7 @@ class Articles extends Component {
         this.fetchArticles()
     }
     fetchArticles = async () => {
-        const articles = await API.getArticles()
+        const { articles } = await API.getArticles()
         this.setState({
             articles
         })
