@@ -8,7 +8,7 @@ class Articles extends Component {
     state = {
         articles: [],
         isLoading: true,
-        sortBy: undefined,
+        sort_by: undefined,
         order: undefined,
         p: undefined,
         limit: undefined
@@ -20,7 +20,7 @@ class Articles extends Component {
         return ( isLoading ? <p>Loading...</p> 
             : 
             <div>
-                <SortingQueries dropDownOptions={list} />
+                <SortingQueries dropDownOptions={list} applyQueries={this.applyQueries} />
                 <main className='content'>
                     {articles.map((article) => (
                         <ArticleCard article={article} key={`${article.id}-card`} className='card'/>
@@ -35,12 +35,16 @@ class Articles extends Component {
             isLoading: false
         })
     }
-    componentDidUpdate({topic: prevTopic}, prevState) {
+    componentDidUpdate({topic: prevTopic}, {sort_by: prevSort_by, order: prevOrder, p: prevP, limit: prevLimit}) {
         const { topic } = this.props
-        if (prevTopic !== topic) this.updateArticles(topic)
+        const {sort_by, order, limit, p} = this.state
+        if (prevTopic !== topic) this.updateArticles({topic})
+        if (sort_by !== prevSort_by || order !== prevOrder || p !== prevP || limit !== prevLimit) {
+            this.updateArticles({topic, sort_by, order, limit, p})
+        }
     }
 
-    updateArticles = (...params) => {
+    updateArticles = ({...params}) => {
         this.setState({
             isLoading: true
         })
@@ -50,15 +54,23 @@ class Articles extends Component {
         })
     }
 
-    fetchArticles = async (topic) => {
-        const { articles } = await API.getArticles(topic)
+    fetchArticles = async (params) => {
+        console.log(params)
+        const { articles } = await API.getArticles(params)
         this.setState({
             articles
         })
+        console.log(this.state.articles)
     }
     getTopicsList = async () => {
         const topics = await API.getTopics()
         return topics
+    }
+
+    applyQueries = (props) => {
+        this.setState({
+            ...props
+        })
     }
 }
 
