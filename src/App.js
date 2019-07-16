@@ -7,9 +7,9 @@ import Articles from './components/Articles';
 function App() {
   return (
     <div className="App">
-      <Header />
-      <Nav />
-      <Articles />
+      <Header className="heading"/>
+      <Nav className="nav" />
+      <Articles className="content" />
     </div>
   );
 }

@@ -8,17 +8,13 @@ const getTopics = async () => {
 }
 
 const getArticles = async (config = {}) => {
-    const res = await axios.get({ 
-        baseURL,
-        URL: '/articles',
-        ...config})
-        console.log(res)
-    return res.data
+    const { data } = await axios.get( baseURL + '/articles', {...config})
+    return data
 }
 
-const getArticleById = async (id) => {
-    const { data } = await axios.get(`${baseURL}/articles/${id}`)
-    return data
+const getArticleById = async (config = {}) => {
+    const res = await axios.get(`${baseURL}/articles/${config.id}`, {...config})
+    return res.data
 }
 
 export default { getTopics, getArticles, getArticleById }

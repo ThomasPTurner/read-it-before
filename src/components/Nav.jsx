@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils'
 import { Link } from '@reach/router'
+import '../styles/nav.css'
 
 
 class Nav extends Component {
@@ -10,13 +11,13 @@ class Nav extends Component {
     render() {
         const { topics } = this.state
         return (
-            <div>
+            <nav className="nav">
                 {topics.map(({ slug })=>(
-                    <Link to={`topics/${slug}`} key={`${slug}-nav`}>
+                    <Link className='navLink' to={`topics/${slug}`} key={`${slug}-nav`}>
                         <p>{slug}</p>
                     </Link> )
                 )}
-            </div>
+            </nav>
         );
     }
     componentDidMount() {

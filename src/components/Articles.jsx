@@ -4,29 +4,37 @@ import ArticleCard from './ArticleCard';
 
 class Articles extends Component {
     state = {
-        articles: []
+        articles: [],
+        isLoading: true
     }
     render() {
-        const { articles } = this.state
-        return (
+        const { articles, isLoading } = this.state
+        return ( isLoading ? <p>Loading...</p> 
+            : 
             <div>
-                <ul>
-                    {articles.map(({id}) => (
-                        <ArticleCard key={`${id}-card`} id={id} />
+                <ul className='content'>
+                    {articles.map((article) => (
+                        <ArticleCard article={article} key={`${article.id}-card`}/>
                     ))}
                 </ul>
             </div>
         );
     }
+
     componentDidMount() {
         this.fetchArticles()
+        this.setState({ 
+            isLoading: false
+        })
     }
+
     fetchArticles = async () => {
         const { articles } = await API.getArticles()
         this.setState({
             articles
         })
     }
+
 }
 
 export default Articles;
