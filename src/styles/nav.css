@@ -1,0 +1,14 @@
+.nav {
+    grid-area: navigation;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border: black 1px solid;
+    overflow: hidden;
+  }
+  
+  .navLink {
+    margin: 0 !important;
+    padding-left: 10px;
+    padding-right: 10px;
+  }

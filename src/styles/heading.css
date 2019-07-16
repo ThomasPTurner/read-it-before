@@ -1,0 +1,22 @@
+.headingContainer {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.headings {
+    border: 1px chartreuse solid;
+    margin: 0;
+    text-align: left;
+    width: 45vw;
+    padding: 0;
+    width: auto;
+}
+
+#topicSubHeading {
+    margin-left: 10px;
+    font-style: italic;
+    text-align: center;
+    width: auto;
+}

@@ -1,14 +1,11 @@
 import React from 'react';
-import TopicHeader from './TopicHeader';
-import { Router } from '@reach/router';
+import '../styles/heading.css'
 
-function Header(props) {
+function Header({ topic }) {
     return (
-        <div className="heading">
-            <h1>Read-it before</h1>
-            <Router >
-                <TopicHeader path="/topics/:topic_id" currentTopic="football"/>
-            </Router>
+        <div className='headingContainer'>
+            <h1 id="mainHeading" className="headings">Read-it before</h1>
+            <h2 id="topicSubHeading" className='headings'>{topic}</h2>
         </div>
     );
 }

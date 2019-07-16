@@ -12,10 +12,13 @@ class Nav extends Component {
         const { topics } = this.state
         return (
             <nav className="nav">
-                {topics.map(({ slug })=>(
-                    <Link className='navLink' to={`topics/${slug}`} key={`${slug}-nav`}>
-                        <p>{slug}</p>
-                    </Link> )
+                <Link to={'/'} key='home-nav' >
+                    <p className='navLink'>Home</ p>
+                </Link>
+                {topics.map(({ slug }) =>(
+                    <Link to={`topics/${slug}`} key={`${slug}-nav`}>
+                        <p className='navLink'>{slug}</ p>
+                    </Link>)
                 )}
             </nav>
         );
