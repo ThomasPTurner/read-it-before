@@ -8,7 +8,7 @@ const getTopics = async () => {
 }
 
 const getArticles = async (config = {}) => {
-    const { data } = await axios.get( baseURL + '/articles', {...config})
+    const { data } = await axios.get(baseURL + '/articles', {...config})
     return data
 }
 

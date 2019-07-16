@@ -8,12 +8,15 @@ import { Router } from '@reach/router';
 function App() {
   return (
     <div className="App">
-      <Router className="headingContainer"> 
+      <Router> 
         <Header path="topics/:topic"/>
         <Header path="/"/>
       </Router>
       <Nav className="nav" />
-      <Articles className="content" />
+      <Router> 
+        <Articles path="topics/:topic"/>
+        <Articles path="/"/>
+      </Router>
     </div>
   );
 }

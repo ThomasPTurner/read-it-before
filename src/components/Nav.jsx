@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils'
 import { Link } from '@reach/router'
-import '../styles/nav.css'
+import '../styles/subHeadingContainer.css'
 
 
 class Nav extends Component {
@@ -11,16 +11,19 @@ class Nav extends Component {
     render() {
         const { topics } = this.state
         return (
-            <nav className="nav">
-                <Link to={'/'} key='home-nav' >
-                    <p className='navLink'>Home</ p>
-                </Link>
-                {topics.map(({ slug }) =>(
-                    <Link to={`topics/${slug}`} key={`${slug}-nav`}>
-                        <p className='navLink'>{slug}</ p>
-                    </Link>)
-                )}
-            </nav>
+            <div className="subHeading">
+                <nav className="nav">
+                    <Link to={'/'} key='home-nav' >
+                        <p className='navLink'>Home</ p>
+                    </Link>
+                    {topics.map(({ slug }) =>(
+                        <Link to={`topics/${slug}`} key={`${slug}-nav`}>
+                            <p className='navLink'>{slug}</ p>
+                        </Link>)
+                    )}
+                </nav>
+                <p className="userData">A user</p>
+            </div>
         );
     }
     componentDidMount() {
