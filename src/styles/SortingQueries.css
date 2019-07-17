@@ -1,0 +1,21 @@
+.textbox {
+    width: 1.5em;
+    text-align: center;
+}
+
+.dropdown { 
+    text-align: center;
+}
+
+.sortQueries {
+    display:flex;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    align-items: flex-end
+}
+
+.orderButton {
+    width: 3em;
+    text-align: center;
+    padding: 0;
+}

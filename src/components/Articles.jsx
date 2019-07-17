@@ -3,6 +3,7 @@ import API from '../utils/api-utils'
 import ArticleCard from './ArticleCard';
 import '../styles/content.css'
 import SortingQueries from './SortingQueries';
+import PreviousNext from './PreviousNext';
 
 class Articles extends Component {
     state = {
@@ -10,22 +11,23 @@ class Articles extends Component {
         isLoading: true,
         sort_by: undefined,
         order: undefined,
-        p: undefined,
+        p: 1,
         limit: undefined
     }
 
     render() {
-        const { articles, isLoading } = this.state
-        const list = this.getTopicsList()
+        const { articles, isLoading, p } = this.state
         return ( isLoading ? <p>Loading...</p> 
             : 
+            
             <div>
-                <SortingQueries dropDownOptions={list} applyQueries={this.applyQueries} />
+                <SortingQueries p={p} applyQueries={this.applyQueries} />
                 <main className='content'>
                     {articles.map((article) => (
                         <ArticleCard article={article} key={`${article.id}-card`} className='card'/>
                     ))}
                 </main>
+                <PreviousNext turnPage={this.turnPage} p={p} />
             </div>
         );
     }
@@ -55,22 +57,25 @@ class Articles extends Component {
     }
 
     fetchArticles = async (params) => {
-        console.log(params)
         const { articles } = await API.getArticles(params)
         this.setState({
             articles
         })
-        console.log(this.state.articles)
-    }
-    getTopicsList = async () => {
-        const topics = await API.getTopics()
-        return topics
     }
 
     applyQueries = (props) => {
         this.setState({
             ...props
         })
+    }
+
+    turnPage = ({target: { id }}) => {
+        const { p } = this.state
+        const refObj = {
+            prev: () => this.setState({ p: p - 1 }),
+            next: () => this.setState({ p: p + 1})
+        }
+        refObj[id]()
     }
 }
 

@@ -13,8 +13,14 @@ const getArticles = async (config = {}) => {
 }
 
 const getArticleById = async (config = {}) => {
-    const res = await axios.get(`${baseURL}/articles/${config.id}`, {...config})
-    return res.data
+    const { data } = await axios.get(`${baseURL}/articles/${config.id}`, {...config})
+    return data
 }
 
-export default { getTopics, getArticles, getArticleById }
+const getComments = async (config = {}) => {
+    console.log(config)
+    const { data } = await axios.get(`${baseURL}/articles/${config.article_id}/comments`)
+    return data
+}
+
+export default { getTopics, getArticles, getArticleById, getComments }

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 
 class ArticleCard extends Component {
     render() {
-        const { article: { title, body, votes }} = this.props
+        const { article: { title, body, votes, id }} = this.props
         return ( 
             <div className='card'>
-               <h3>{title}</h3>
-               <p>{body}</p>
-               <p>{votes}</p>
+                <Link to={`/articles/${id}`}>
+                    <h3>{title}</h3>
+                </Link>
+                <p>{body}</p>
+                <p>{votes}</p>
             </div>
         );
     }
