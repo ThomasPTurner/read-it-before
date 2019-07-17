@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
 
-class PostComment extends Component {
+class PostArticle extends Component {
     state = {
         posting: false,
+        title: '',
         body: ''
     }
     render() {
         const { posting } = this.state
         return posting ?  
             <form>
-                <label htmlFor="body">Comment:</label>
+                <label htmlFor="title">Title:</label>
+                <input onChange={this.handleChange} type='text' id='title' />
+                <label htmlFor="body">Body:</label>
                 <input onChange={this.handleChange} type='text' id='body' />
                 <button onClick={this.handleSubmit} type='submit'>Submit</button>
             </form> 
@@ -23,30 +26,32 @@ class PostComment extends Component {
             posting: posting ? false : true
         })
     }
-    handleChange = ({target: { value }}) => {
+    handleChange = ({target: { id, value }}) => {
         this.setState({
-            body: value
+            [id]: value
         })
     }
     
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { body } = this.state
-        const { article_id, postedCommentToFront, sliceComments } = this.props
+        const { body, title } = this.state
+        const { postedArticleToFront, sliceArticles } = this.props
+        const [ topic ] = window.location.pathname.split('/').slice(-1)
         const author = 'happyamy2016'
-        postedCommentToFront({ votes: 0, body, author, created_at: Date.now(), id: Date.now()})
-        await API.postComment({ body, username: author, article_id})
-            .then (({comment})=> {
-                sliceComments(1, 9)
-                postedCommentToFront(comment)
+        postedArticleToFront({ votes: 0, body, title, author, created_at: Date.now(), id: Date.now()})
+        await API.postArticle({ topic, body, title, username: author, })
+            .then (({article})=> {
+                sliceArticles(1, 9)
+                postedArticleToFront(article)
                 this.setState({
+                    title: '',
                     body: '',
                     posting: false
                 })
-                sliceComments(0, 9)
+                sliceArticles(0, 9)
             })
             .catch(()=> {
-                sliceComments(1,10)
+                sliceArticles(1,10)
                 this.setState({
                     posting: true
                 })
@@ -55,4 +60,4 @@ class PostComment extends Component {
 
 }
 
-export default PostComment;
+export default PostArticle;

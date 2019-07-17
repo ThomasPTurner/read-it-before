@@ -10,10 +10,11 @@ class Article extends Component {
         isLoading: true,
     }
     render() {
-        const { isLoading, article: { title, body, id, comment_count, votes } } = this.state
+        const { isLoading, article: { title, body, id, comment_count, votes, author } } = this.state
         return isLoading ? <p>Loading...</p> : (
             <div>
                 <h1 className="articleTitle" >{title}</h1> 
+                {(author === 'happyamy2016') ? <button id={id} onClick={this.clickDelete}>Delete</button> : null}
                 <Votes parentId={id} votes={votes} voteType="articles"/>
                 <p className="articleBody" >{body}</p>
                 <p>comments: {comment_count} </p>
@@ -24,7 +25,13 @@ class Article extends Component {
     componentDidMount() {
         this.fetchArticleById()
     }
-    
+
+    clickDelete = async (event) => {
+        const { article: { id, topic }} = this.state
+        event.preventDefault()
+        await API.deleteArticle(id)
+        window.location.href = `/topics/${topic}`
+    }
     fetchArticleById = () => {
         const { article_id: id } = this.props
         API.getArticleById({id})

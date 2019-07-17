@@ -35,4 +35,14 @@ const patchVotes = async (voteType, id, inc_votes) => {
     await axios.patch(`${baseURL}/${voteType}/${id}`, { inc_votes })
 }
 
-export default { patchVotes, deleteComment, getTopics, getArticles, getArticleById, getComments, postComment }
+const postArticle = async ({...config}) => {
+    const { data } = await axios.post(`${baseURL}/articles/`, {...config})
+    return data
+}
+
+const deleteArticle = async (id) => {
+    console.log(id)
+    await axios.delete(`${baseURL}/articles/${id}`)
+}
+
+export default { deleteArticle, postArticle, patchVotes, deleteComment, getTopics, getArticles, getArticleById, getComments, postComment }

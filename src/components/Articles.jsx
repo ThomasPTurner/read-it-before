@@ -4,6 +4,7 @@ import ArticleCard from './ArticleCard';
 import '../styles/content.css'
 import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
+import PostArticle from './PostArticle';
 
 class Articles extends Component {
     state = {
@@ -16,15 +17,16 @@ class Articles extends Component {
     }
 
     render() {
+        const { path } = this.props
         const { articles, isLoading, p } = this.state
         return ( isLoading ? <p>Loading...</p> 
             : 
-            
             <div>
+                {(path === "/") ? null : <PostArticle sliceArticles={this.sliceArticles} postedArticleToFront={this.postedArticleToFront} />}
                 <SortingQueries p={p} applyQueries={this.applyQueries} />
                 <main className='content'>
                     {articles.map((article) => (
-                        <ArticleCard article={article} key={`${article.id}-card`} className='card'/>
+                        <ArticleCard article={article} key={`${article.id}-card`} clickDelete={this.clickDelete} className='card'/>
                     ))}
                 </main>
                 <PreviousNext turnPage={this.turnPage} p={p} />
@@ -76,6 +78,52 @@ class Articles extends Component {
             next: () => this.setState({ p: p + 1})
         }
         refObj[id]()
+    }
+
+    postedArticleToFront = (article) => {
+        this.setState(() => {
+            const newArticles = this.state.articles
+            newArticles.unshift(article)
+            return { 
+                articles: newArticles
+            }
+        })
+    }
+    
+    sliceArticles = (start, finish) => {
+        this.setState(()=> {
+            const { articles } = this.state
+            return { articles: articles.slice(start, finish) }
+        })
+    }
+
+    clickDelete = (event) => {
+        event.preventDefault()
+        const { target: {id} } = event
+        const [removedArticle, index] = this.removeArticleFromState(id)
+        API.deleteArticle(id)
+        .catch(() => {
+                this.setState(() => {
+                    const { articles } = this.state
+                    articles.splice(index, 0, removedArticle)
+                    return { articles }
+                })
+            })
+    }
+
+    removeArticleFromState = (id) => {
+        const { articles } = this.state
+        let output = []
+        articles.forEach(({id: article_id} , i)=> {
+            if (+article_id === +id) {
+                const [removedArticle] = articles.splice(i, 1)
+                output = [removedArticle, i]
+            }
+            this.setState({
+                articles
+            })
+        })
+        return output
     }
 }
 

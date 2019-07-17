@@ -67,16 +67,6 @@ class Comments extends Component {
         refObj[id]()
     }
 
-    postedCommentToFront = (comment) => {
-        this.props.incrementComments()
-        this.setState(() => {
-            const newComments = this.state.comments
-            newComments.unshift(comment)
-            return { 
-                comment: newComments
-            }
-        })
-    }
     
     clickDelete = (event) => {
         event.preventDefault()
@@ -84,7 +74,7 @@ class Comments extends Component {
         const [removedComment, index] = this.removeCommentFromState(id)
         this.props.incrementComments(-1)
         API.deleteComment(id)
-            .catch(() => {
+        .catch(() => {
                 this.setState(() => {
                     this.props.incrementComments()
                     const { comments } = this.state
@@ -108,7 +98,18 @@ class Comments extends Component {
         })
         return output
     }
-
+    
+    postedCommentToFront = (comment) => {
+        this.props.incrementComments()
+        this.setState(() => {
+            const newComments = this.state.comments
+            newComments.unshift(comment)
+            return { 
+                comment: newComments
+            }
+        })
+    }
+    
     sliceComments = (start, finish) => {
         this.setState(()=> {
             const { comments } = this.state

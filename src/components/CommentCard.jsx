@@ -6,7 +6,7 @@ function CommentCard({clickDelete, comment: {id, author, body, votes}}) {
         <div>
             <h4>{author}</h4>
             <p>{body}</p>
-            <Votes votes={votes} voteType="comments"/>
+            <Votes parentId={id} votes={votes} voteType="comments"/>
             {(author === 'happyamy2016') ? <button id={id} onClick={clickDelete}>Delete</button> : null}
         </div>
     );
