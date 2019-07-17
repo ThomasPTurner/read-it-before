@@ -22,4 +22,17 @@ const getComments = async (config = {}) => {
     return data
 }
 
-export default { getTopics, getArticles, getArticleById, getComments }
+const postComment = async ({article_id, ...config}) => {
+    const { data } = await axios.post(`${baseURL}/articles/${article_id}/comments`, {...config})
+    return data
+}
+
+const deleteComment = async (comment_id) => {
+    await axios.delete(`${baseURL}/comments/${comment_id}`)
+} 
+
+const patchVotes = async (voteType, id, inc_votes) => {
+    await axios.patch(`${baseURL}/${voteType}/${id}`, { inc_votes })
+}
+
+export default { patchVotes, deleteComment, getTopics, getArticles, getArticleById, getComments, postComment }

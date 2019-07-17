@@ -9,7 +9,7 @@ class SortingQueries extends Component {
         limit: 10
     }
     render () {
-        const options = ['votes', 'author', 'created_at']
+        const options = ['created_at', 'votes', 'author']
         const { order, p, limit } = this.state
         return (<form className="sortQueries">
             <select id='sort_by' onChange={this.handleChange} >
@@ -49,7 +49,6 @@ class SortingQueries extends Component {
             asc: 'desc',
             desc: 'asc'
         }
-        
         this.setState ({
             order: refObj[innerText]
         })
