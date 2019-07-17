@@ -10,7 +10,6 @@ class Article extends Component {
     }
     render() {
         const { isLoading, article: { title, body, id, comment_count } } = this.state
-        console.log(id)
         return isLoading ? <p>Loading...</p> : (
             <div>
                 <h1 className="articleTitle" >{title}</h1> 

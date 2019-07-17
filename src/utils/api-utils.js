@@ -18,8 +18,7 @@ const getArticleById = async (config = {}) => {
 }
 
 const getComments = async (config = {}) => {
-    console.log(config)
-    const { data } = await axios.get(`${baseURL}/articles/${config.article_id}/comments`)
+    const { data } = await axios.get(`${baseURL}/articles/${config.article_id}/comments`, config)
     return data
 }
 
