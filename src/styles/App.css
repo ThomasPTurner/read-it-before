@@ -8,11 +8,17 @@
     'heading'
     'navigation'
     'body';
+  background: #fcfffe;
+  font-family: 'Source Sans Pro', sans-serif;
 }
- #root {
-  height: 100vh;
-  width: 98vw;
- }
+
+body {
+  margin: 0
+}
+
+a {
+  text-decoration: none;
+}
 
 .nav {
   grid-area: navigation;
@@ -24,11 +30,6 @@
 
 .content {
   grid-area: body;
-}
-
-body {
-  margin: 0;
-  width: 98vw;
 }
 
 .headingContainer {

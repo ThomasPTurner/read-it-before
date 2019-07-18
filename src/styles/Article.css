@@ -1,5 +1,7 @@
 .article {
     display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: 3em auto;
     grid-template-areas: 
         "votes articleHeader"
         "votes body";
@@ -7,7 +9,6 @@
 
 .articleTitle {
     grid-area: articleTitle;
-    margin-left: 10px;
     max-width: 60vw;
 }
 

@@ -4,7 +4,7 @@ import '../styles/CommentCard.css'
 
 function CommentCard({clickDelete, comment: {id, author, body, votes}}) {
     return (
-        <div className="commentCard">
+        <div className="commentCard card">
             <div className="commentHeading">
                 <h4 className="commentAuthor">{author}</h4>
                 {(author === 'happyamy2016') ? <button id={id} onClick={clickDelete}>Delete</button> : null}

@@ -41,7 +41,6 @@ const postArticle = async ({...config}) => {
 }
 
 const deleteArticle = async (id) => {
-    console.log(id)
     await axios.delete(`${baseURL}/articles/${id}`)
 }
 
