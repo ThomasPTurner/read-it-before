@@ -16,7 +16,7 @@ class Article extends Component {
                 <div className="article">
                     <div className="articleHeading">
                         <h1 className="articleTitle" >{title}</h1> 
-                        {(author === 'happyamy2016') ? <button id={id} onClick={this.clickDelete}>Delete</button> : null}
+                        {(author === 'happyamy2016') ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
                     </div>
                     <Votes className="articleVotes" parentId={id} votes={votes} voteType="articles"/>
                     <p className="articleBody" >{body}</p>

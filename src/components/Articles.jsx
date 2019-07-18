@@ -4,7 +4,8 @@ import ArticleCard from './ArticleCard';
 import '../styles/content.css'
 import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
-import PostArticle from './PostArticle';
+import { Link } from '@reach/router';
+
 
 class Articles extends Component {
     state = {
@@ -17,12 +18,13 @@ class Articles extends Component {
     }
 
     render() {
-        const { path } = this.props
         const { articles, isLoading, p } = this.state
         return ( isLoading ? <p>Loading...</p> 
             : 
             <div>
-                {(path === "/") ? null : <PostArticle sliceArticles={this.sliceArticles} postedArticleToFront={this.postedArticleToFront} />}
+                <Link to="/postarticle">
+                    Post an article
+                </Link>
                 <SortingQueries p={p} applyQueries={this.applyQueries} />
                 <main className='content'>
                     {articles.map((article) => (

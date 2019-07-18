@@ -2,7 +2,6 @@
     grid-area: navigation;
     display: flex;
     flex-direction: row;
-    border: black 1px solid;
     max-width: 100%;
     justify-content: left;
   }

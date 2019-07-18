@@ -8,6 +8,7 @@
 .articleTitle {
     grid-area: articleTitle;
     margin-left: 10px;
+    max-width: 60vw;
 }
 
 .articleBody {
@@ -24,5 +25,9 @@
     flex-direction: row;
     justify-content: space-between;
     min-height: 1em
+}
+
+.articleDeleteButton {
+    height: 1.5em;
 }
 

@@ -8,4 +8,4 @@ https://github.com/ThomasPTurner/nc-news
 
 back end deployed here:
 
-https://github.com/ThomasPTurner/nc-news
+https://readitbefore.herokuapp.com/api/

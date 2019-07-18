@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
-import '../styles/PostComment.css';
+import '../styles/PostComment.css'
 
 class PostComment extends Component {
     state = {
         posting: false,
-        body: ''
+        commentBody: ''
     }
     render() {
         const { posting } = this.state
         return posting ?  
-            <form>
-                <label htmlFor="body">Comment:</label>
-                <input onChange={this.handleChange} type='text' id='body' />
-                <button onClick={this.handleSubmit} type='submit'>Submit</button>
+            <form className="commentPostDialogueContainer">
+                <label className="commentBodyLabel" htmlFor="commentBody">Comment:</label>
+                <input className="commentBodyInput" onChange={this.handleChange} type='text' id='commentBody' />
+                <button className="postButton" onClick={this.handleSubmit} type='submit'>Submit</button>
             </form> 
-            : <button className="postButton" onClick={this.togglePostForm}>Post Comment</button>;
+            : <button className="postButton" onClick={this.togglePostForm}>Post a comment</button>;
     }
     
     togglePostForm = () => {
@@ -24,33 +24,36 @@ class PostComment extends Component {
             posting: posting ? false : true
         })
     }
+
     handleChange = ({target: { value }}) => {
         this.setState({
-            body: value
+            commentBody: value
         })
     }
     
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { body } = this.state
+        const { commentBody: body } = this.state
         const { article_id, postedCommentToFront, sliceComments } = this.props
         const author = 'happyamy2016'
-        postedCommentToFront({ votes: 0, body, author, created_at: Date.now(), id: Date.now()})
-        await API.postComment({ body, username: author, article_id})
-            .then (({comment})=> {
-                sliceComments(1, 9)
-                postedCommentToFront(comment)
-                this.setState({
-                    body: '',
-                    posting: false
+        if (body !== '') {
+            postedCommentToFront({ votes: 0, body, author, created_at: Date.now(), id: Date.now()})
+            await API.postComment({ body, username: author, article_id})
+                .then (({comment})=> {
+                    sliceComments(1, 9)
+                    postedCommentToFront(comment)
+                    this.setState({
+                        commentBody: '',
+                        posting: false
+                    })
                 })
-            })
-            .catch(()=> {
-                sliceComments(1,10)
-                this.setState({
-                    posting: true
+                .catch(()=> {
+                    sliceComments(1,10)
+                    this.setState({
+                        posting: true
+                    })
                 })
-            })
+        } 
     }
 
 }

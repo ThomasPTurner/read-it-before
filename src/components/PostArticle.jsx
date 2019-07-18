@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
+import '../styles/PostArticles.css'
 
 class PostArticle extends Component {
     state = {
-        posting: false,
         title: '',
-        body: ''
+        body: '',
+        topic: '',
+        topics: []
     }
     render() {
-        const { posting } = this.state
-        return posting ?  
-            <form>
-                <label htmlFor="title">Title:</label>
-                <input onChange={this.handleChange} type='text' id='title' />
-                <label htmlFor="body">Body:</label>
-                <input onChange={this.handleChange} type='text' id='body' />
-                <button onClick={this.handleSubmit} type='submit'>Submit</button>
-            </form> 
-            : <button onClick={this.togglePostForm}>Post</button>;
+        const { topics } = this.state 
+        return (            
+            <form className="postDialogueContainer">
+                <label className="topicLabel" htmlFor="topic">Topic:</label>
+                <select placeholder="choose a topic..." className="topicInput" onChange={this.handleChange} id='topic'>
+                    <option className='topicOption' key="default-option">choose a topic....</option>
+                    {topics.map(({ slug }) =>(
+                            <option key={`${slug}-option`} className='topicOption'>{slug}</ option>
+                    ))}
+                </select>
+                <label className="titleLabel" htmlFor="title">Title:</label>
+                <input className="titleInput" onChange={this.handleChange} type='text' id='title' />
+                <label className="bodyLabel" htmlFor="body">Body:</label>
+                <input className="bodyInput" onChange={this.handleChange} type='text' id='body' />
+                <button className="postButton" onClick={this.handleSubmit} type='submit'>Submit</button>
+            </form>
+        )
+    }
+
+    componentDidMount() {
+        this.fetchTopics()
     }
     
     togglePostForm = () => {
@@ -35,28 +48,21 @@ class PostArticle extends Component {
     
     handleSubmit = async (event) => {
         event.preventDefault()
-        const { body, title } = this.state
-        const { postedArticleToFront, sliceArticles } = this.props
-        const [ topic ] = window.location.pathname.split('/').slice(-1)
+        const { body, title, topic } = this.state
         const author = 'happyamy2016'
-        postedArticleToFront({ votes: 0, body, title, author, created_at: Date.now(), id: Date.now()})
-        await API.postArticle({ topic, body, title, username: author, })
-            .then (({article})=> {
-                sliceArticles(1, 9)
-                postedArticleToFront(article)
-                this.setState({
-                    title: '',
-                    body: '',
-                    posting: false
+        if (body !== '' && title !== '' && topic !== '' && topic !== 'choose a topic...') {
+            await API.postArticle({ topic, body, title, username: author, })
+                .then (async ({article: { id } })=> {
+                    window.location.href = `/articles/${ id }`
                 })
-                sliceArticles(0, 9)
-            })
-            .catch(()=> {
-                sliceArticles(1,10)
-                this.setState({
-                    posting: true
-                })
-            })
+        }
+    }
+
+    fetchTopics = async () => {
+        const topics = await API.getTopics()
+        this.setState({
+            topics
+        })
     }
 
 }

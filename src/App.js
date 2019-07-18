@@ -7,20 +7,24 @@ import { Router } from '@reach/router';
 import Article from './components/Article';
 import Footer from './components/Footer';
 import Error from './components/Error'
+import PostArticle from './components/PostArticle';
 
 function App() {
   return (
     <div className="App">
-      <Router> 
-        <Header path="topics/:topic"/>
-        <Header path="/"/>
-        <Header path="/articles/:article_id"/>
-      </Router>
+      <div className="headingContainer">
+        <h1 id="mainHeading" className="headings">Read-it before</h1>
+        <Router> 
+          <Header path="topics/:topic"/>
+          <Header path="/articles/:article_id"/>
+        </Router>
+      </div>
       <Nav className="nav" />
       <Router> 
         <Articles path="topics/:topic"/>
         <Articles path="/"/>
         <Article path="/articles/:article_id" />
+        <PostArticle path="postarticle" />
         <Error default path="/error" />
       </Router>
       <Footer />

@@ -1,0 +1,47 @@
+.postDialogueContainer {
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 10px auto auto;
+    grid-template-areas: 
+    ". topicLabel ."
+    ". topicInput ."
+    ". titleLabel ."
+    ". titleInput titleInput"
+    ". bodyLabel ."
+    ". bodyInput bodyInput"
+    ". . postButton"
+}
+.postButton {
+    grid-area: postButton;
+    width: 10em;
+    height: 1.5em;
+    vertical-align: bottom;
+}
+
+.titleLabel {
+    grid-area: titleLabel;
+}
+
+.titleInput {
+    grid-area: titleInput;
+    min-height: 1.1em
+}
+
+.bodyLabel {
+    grid-area: bodyLabel;
+}
+
+.bodyInput {
+    grid-area: bodyInput;
+    min-height: 15em;
+    text-align: left;
+    vertical-align: text-top;
+}
+.topicLabel {
+    grid-area: topicLabel;
+}
+
+.topicInput {
+    grid-area: topicInput;
+    width: 10em
+}
