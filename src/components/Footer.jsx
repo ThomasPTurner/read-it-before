@@ -4,7 +4,7 @@ import '../styles/Footer.css'
 function Footer(props) {
     return (
         <div>
-            <p className='footer'>A Footer</p>
+            <p className='footer'>Created by Thomas Turner</p>
         </div>
     );
 }
