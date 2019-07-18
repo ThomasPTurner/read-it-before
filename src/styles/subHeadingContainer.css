@@ -1,18 +1,3 @@
-.nav {
-    grid-area: navigation;
-    display: flex;
-    flex-direction: row;
-    overflow-x: scroll;
-    max-width: 100%;
-    justify-content: left;
-  }
-  
-  .navLink {
-    grid-area: navigation;
-    margin: 0;
-    padding-left: 3px;
-    padding: 0;
-  }
 
 .userData {
     grid-area: user;
@@ -22,8 +7,7 @@
 
 .subHeading {
     border: red 1px solid;
-    grid-area: navigation;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 4fr 1fr;
     grid-template-areas: "navigation user"
 }

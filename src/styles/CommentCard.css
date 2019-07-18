@@ -1,0 +1,42 @@
+.commentCard {
+    margin: 5px;
+    display: grid;
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        'votes author'
+        'votes body';
+    max-height: 100%;
+    overflow-y: scroll;
+    border: 1px solid salmon;
+    border-radius: 5px
+}
+
+.commentHeading {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 1em
+}
+
+.commentAuthor {
+    grid-area: author;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 0;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.votes {
+    grid-area: votes;
+    height: 4em;
+}
+
+.body {
+    grid-area: body;
+    padding-right: 10px;
+    margin: 0;
+    min-height: 4em;
+}

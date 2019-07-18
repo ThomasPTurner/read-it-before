@@ -4,6 +4,7 @@ import SortingQueries from './SortingQueries';
 import CommentCard from './CommentCard';
 import PreviousNext from './PreviousNext';
 import PostComment from './PostComment'
+import '../styles/comments.css'
 
 class Comments extends Component {
     state = {
@@ -17,7 +18,7 @@ class Comments extends Component {
         const { article_id } = this.props
         const { comments, p } = this.state
         return (
-            <div>
+            <div className="commentsContainer">
                 <PostComment sliceComments={this.sliceComments} postedCommentToFront={this.postedCommentToFront} article_id={article_id} />
                 <SortingQueries p={p} applyQueries={this.applyQueries}/>
                 { comments.map((comment) => (

@@ -15,16 +15,16 @@ class Nav extends Component {
         return (
             <div className="subHeading">
                 <nav className="nav">
-                    <Link className='navLink' to={'/'} key='home-nav' >
+                    <Link to={'/'} key='home-nav' >
                         <p className='navLink'>Home</ p>
                     </Link>
                     {topics.map(({ slug }) =>(
-                        <Link className='navLink' to={`topics/${slug}`} key={`${slug}-nav`}>
+                        <Link to={`topics/${slug}`} key={`${slug}-nav`}>
                             <p className='navLink'>{slug}</ p>
                         </Link>)
                     )}
                 </nav>
-                <CurrentUser />
+                <CurrentUser className='currentUser'/>
             </div>
         );
     }
