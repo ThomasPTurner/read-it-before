@@ -1,0 +1,28 @@
+.article {
+    display: grid;
+    grid-template-areas: 
+        "votes articleHeader"
+        "votes body";
+}
+
+.articleTitle {
+    grid-area: articleTitle;
+    margin-left: 10px;
+}
+
+.articleBody {
+    grid-area: body;
+}
+
+.articleVotes {
+    grid-area: votes;
+}
+
+.articleHeading {
+    grid-area: articleHeader;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 1em
+}
+

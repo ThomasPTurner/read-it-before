@@ -1,13 +1,16 @@
 .votes {
+    grid-area: votes;
     display: grid;
     grid-template-rows: 2em 1em 2em;
     grid-template-areas: 
         'upArrow'
         'voteCount'
         'downArrow';
-    text-align:center 
+    text-align:center;
+    height: 4em;
+    margin-left: 5px;
+    margin-right: 5px;
 }
-
 .votesCount {
     grid-area: voteCount;
     align-content: center;

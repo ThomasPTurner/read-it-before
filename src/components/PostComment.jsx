@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
+import '../styles/PostComment.css';
 
 class PostComment extends Component {
     state = {
@@ -14,7 +15,7 @@ class PostComment extends Component {
                 <input onChange={this.handleChange} type='text' id='body' />
                 <button onClick={this.handleSubmit} type='submit'>Submit</button>
             </form> 
-            : <button onClick={this.togglePostForm}>Post</button>;
+            : <button className="postButton" onClick={this.togglePostForm}>Post Comment</button>;
     }
     
     togglePostForm = () => {
@@ -43,7 +44,6 @@ class PostComment extends Component {
                     body: '',
                     posting: false
                 })
-                sliceComments(0, 9)
             })
             .catch(()=> {
                 sliceComments(1,10)

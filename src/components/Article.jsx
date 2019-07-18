@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
 import Comments from './Comments';
-import '../styles/article.css'
+import '../styles/Article.css'
 import Votes from './Votes';
 
 class Article extends Component {
@@ -10,14 +10,17 @@ class Article extends Component {
         isLoading: true,
     }
     render() {
-        const { isLoading, article: { title, body, id, comment_count, votes, author } } = this.state
+        const { isLoading, article: { title, body, id, votes, author } } = this.state
         return isLoading ? <p>Loading...</p> : (
-            <div>
-                <h1 className="articleTitle" >{title}</h1> 
-                {(author === 'happyamy2016') ? <button id={id} onClick={this.clickDelete}>Delete</button> : null}
-                <Votes parentId={id} votes={votes} voteType="articles"/>
-                <p className="articleBody" >{body}</p>
-                <p>comments: {comment_count} </p>
+            <div >
+                <div className="article">
+                    <div className="articleHeading">
+                        <h1 className="articleTitle" >{title}</h1> 
+                        {(author === 'happyamy2016') ? <button id={id} onClick={this.clickDelete}>Delete</button> : null}
+                    </div>
+                    <Votes className="articleVotes" parentId={id} votes={votes} voteType="articles"/>
+                    <p className="articleBody" >{body}</p>
+                </div>
                 <Comments incrementComments={this.incrementComments} article_id={id}/>
             </div>
         );

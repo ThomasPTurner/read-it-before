@@ -1,13 +1,12 @@
 .commentCard {
     margin: 5px;
     display: grid;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
         'votes author'
         'votes body';
     max-height: 100%;
-    overflow-y: scroll;
     border: 1px solid salmon;
     border-radius: 5px
 }
@@ -27,11 +26,6 @@
     margin: 0;
     vertical-align: middle;
     margin: 0;
-}
-
-.votes {
-    grid-area: votes;
-    height: 4em;
 }
 
 .body {
