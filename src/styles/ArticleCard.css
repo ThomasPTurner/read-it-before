@@ -1,0 +1,40 @@
+.articleCard {
+    display: grid;
+    width: 80vw;
+    height: 5em;
+    grid-template-columns: 1fr 10fr;
+    grid-template-rows: 5fr 1fr;
+    grid-template-areas:
+        'votes articleTitle'
+        'votes information';
+    max-height: 100%;
+    overflow-y: scroll;
+}
+
+.articleTitle {
+    grid-area: articleTitle;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    margin: 0;
+    vertical-align: middle;
+    max-height: 100%
+}
+
+.votes {
+    grid-area: votes;
+    height: 4em;
+}
+
+.information {
+    grid-area: information;
+    display: flex;
+    flex-direction: rows;
+    justify-content: stretch;
+}
+
+.author {
+    padding-right: 10px;
+    margin: 0;
+};
+

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
+import '../styles/Votes.css'
 
 class Votes extends Component {
     state = {
@@ -9,14 +10,14 @@ class Votes extends Component {
     render() {
         const { votes, changedVotes } = this.state
         return (
-            <div>
-                <p className="arrows" id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
-                <p>{votes}</p>
-                <p className="arrows" id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇩</p>
+            <div className="votes">
+                <p className="votesUpArrow" id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
+                <p className="votesCount" >{votes}</p>
+                <p className="votesDownArrow" id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇩</p>
             </div>
         );
     }
-    thi
+
     componentDidMount() {
         const { votes } = this.props
         this.setState({

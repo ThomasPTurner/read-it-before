@@ -1,0 +1,28 @@
+.votes {
+    display: grid;
+    grid-template-rows: 2em 1em 2em;
+    grid-template-areas: 
+        'upArrow'
+        'voteCount'
+        'downArrow';
+    text-align:center 
+}
+
+.votesCount {
+    grid-area: voteCount;
+    align-content: center;
+    margin: 0;
+}
+
+.votesUpArrow {
+    padding: 0.5em ; 
+    grid-area: upArrow;
+    margin: 0;
+}
+
+.votesDownArrow {
+    padding: 0.5em; 
+    grid-area: downArrow;
+    margin: 0;
+
+}

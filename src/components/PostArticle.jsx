@@ -26,6 +26,7 @@ class PostArticle extends Component {
             posting: posting ? false : true
         })
     }
+
     handleChange = ({target: { id, value }}) => {
         this.setState({
             [id]: value

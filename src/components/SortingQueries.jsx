@@ -32,7 +32,6 @@ class SortingQueries extends Component {
         }
     }
     
-
     handleChange = ({ target: { value, id } }) => {
         this.setState({
             [id]: value

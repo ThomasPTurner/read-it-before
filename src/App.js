@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import Articles from './components/Articles';
 import { Router } from '@reach/router';
 import Article from './components/Article';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Articles path="/"/>
         <Article path="/articles/:article_id" />
       </Router>
+    <Footer />
     </div>
   );
 }

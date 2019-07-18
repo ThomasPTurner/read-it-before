@@ -7,8 +7,11 @@
     justify-content: left;
   }
   
-  .navLink {
-    margin: 0 !important;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
+.navLink {
+  padding-left: 2px;
+  padding-right: 5px;
+}
+
+.currentUser {
+  margin: 0;
+}

@@ -2,15 +2,16 @@
     grid-area: navigation;
     display: flex;
     flex-direction: row;
-    
-    overflow: hidden;
+    overflow-x: scroll;
+    max-width: 100%;
     justify-content: left;
   }
   
   .navLink {
-    margin: 0 !important;
-    padding-left: 10px;
-    padding-right: 10px;
+    grid-area: navigation;
+    margin: 0;
+    padding-left: 3px;
+    padding: 0;
   }
 
 .userData {
@@ -20,10 +21,9 @@
 }
 
 .subHeading {
-    border: black 1px solid;
+    border: red 1px solid;
     grid-area: navigation;
     display: grid;
-    grid-template-rows: 10fr 2fr;
-    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
     grid-template-areas: "navigation user"
 }

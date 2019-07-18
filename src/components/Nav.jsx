@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import API from '../utils/api-utils'
 import { Link } from '@reach/router'
 import '../styles/subHeadingContainer.css'
+import '../styles/nav.css'
+import CurrentUser from './CurrentUser';
 
 
 class Nav extends Component {
@@ -13,16 +15,16 @@ class Nav extends Component {
         return (
             <div className="subHeading">
                 <nav className="nav">
-                    <Link to={'/'} key='home-nav' >
+                    <Link className='navLink' to={'/'} key='home-nav' >
                         <p className='navLink'>Home</ p>
                     </Link>
                     {topics.map(({ slug }) =>(
-                        <Link to={`topics/${slug}`} key={`${slug}-nav`}>
+                        <Link className='navLink' to={`topics/${slug}`} key={`${slug}-nav`}>
                             <p className='navLink'>{slug}</ p>
                         </Link>)
                     )}
                 </nav>
-                <p className="userData">A user</p>
+                <CurrentUser />
             </div>
         );
     }
