@@ -19,9 +19,9 @@ class SortingQueries extends Component {
                 ))}
             </select>
             <button id='order' onClick={this.orderToggle} className="orderButton">{order}</button>
-            <input onChange={this.handleChange} type="number" id="p" placeholder={p} className="textbox"></input>
+            <input onChange={this.handleChange} type="number" value={p} id="p" placeholder={p} className="textbox"></input>
             <label htmlFor="p">Page</label>
-            <input onChange={this.handleChange} id="limit" type="number" placeholder={limit} className="textbox"></input>
+            <input onChange={this.handleChange} id="limit" type="number" value={limit} placeholder={limit} className="textbox"></input>
             <label htmlFor="limit">Results</label>
             <button type='submit' onClick={this.handleSubmit}>Re-Order</button>
         </form>)
@@ -34,9 +34,15 @@ class SortingQueries extends Component {
     }
     
     handleChange = ({ target: { value, id } }) => {
-        this.setState({
-            [id]: value
-        })
+        if (id === 'p' || id === 'limit' && value < 1) {
+            this.setState({
+                [id]: 1
+            })
+        } else {
+            this.setState({
+                [id]: value
+            })
+        }
     }
 
     handleSubmit = (event) => {
