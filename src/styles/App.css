@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin: 0;
+}
+
 .nav {
   grid-area: navigation;
 }

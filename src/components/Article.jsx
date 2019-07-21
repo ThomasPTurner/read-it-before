@@ -3,6 +3,7 @@ import API from '../utils/api-utils';
 import Comments from './Comments';
 import '../styles/Article.css'
 import Votes from './Votes';
+import utils from '../utils/utils'
 
 class Article extends Component {
     state = {
@@ -10,13 +11,14 @@ class Article extends Component {
         isLoading: true,
     }
     render() {
-        const { isLoading, article: { title, body, id, votes, author } } = this.state
+        const { isLoading, article: { title, body, id, votes, author, created_at } } = this.state
         return isLoading ? <p>Loading...</p> : (
             <div >
                 <div className="article">
                     <div className="articleHeading">
-                        <h1 className="articleTitle" >{title}</h1> 
+                        <h1 className="articleTitle" >{title}</h1>
                         {(author === 'happyamy2016') ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
+                        <p className="timeSince">{utils.timeSince(created_at)}</p>
                     </div>
                     <Votes className="articleVotes" parentId={id} votes={votes} voteType="articles"/>
                     <p className="articleBody" >{body}</p>
@@ -35,6 +37,7 @@ class Article extends Component {
         await API.deleteArticle(id)
         window.location.href = `/topics/${topic}`
     }
+
     fetchArticleById = () => {
         const { article_id: id } = this.props
         API.getArticleById({id})
@@ -43,6 +46,9 @@ class Article extends Component {
                     article,
                     isLoading: false
                 })
+            })
+            .catch(()=> {
+                window.location.href = `/error`
             })
     }
 

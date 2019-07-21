@@ -1,13 +1,13 @@
+.subHeading {
+    border: red 1px solid;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    grid-template-columns: auto;
+    grid-template-areas: "navigation user"
+}
 
 .userData {
     grid-area: user;
     margin: 0;
     border: black 1px solid;
-}
-
-.subHeading {
-    border: red 1px solid;
-    display: grid;
-    grid-template-rows: 4fr 1fr;
-    grid-template-areas: "navigation user"
 }

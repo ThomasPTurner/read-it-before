@@ -6,7 +6,6 @@ import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
 import { Link } from '@reach/router';
 
-
 class Articles extends Component {
     state = {
         articles: [],
@@ -25,7 +24,7 @@ class Articles extends Component {
                 <Link to="/postarticle">
                     Post an article
                 </Link>
-                <SortingQueries p={p} applyQueries={this.applyQueries} />
+                <SortingQueries p={p} applyQueries={this.applyQueries} otherSearchOptions={['comment_count']} />
                 <main className='content'>
                     {articles.map((article) => (
                         <ArticleCard article={article} key={`${article.id}-card`} clickDelete={this.clickDelete} className='card'/>
@@ -80,16 +79,6 @@ class Articles extends Component {
             next: () => this.setState({ p: p + 1})
         }
         refObj[id]()
-    }
-
-    postedArticleToFront = (article) => {
-        this.setState(() => {
-            const newArticles = this.state.articles
-            newArticles.unshift(article)
-            return { 
-                articles: newArticles
-            }
-        })
     }
     
     sliceArticles = (start, finish) => {

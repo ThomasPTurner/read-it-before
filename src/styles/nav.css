@@ -16,3 +16,7 @@
 .currentUser {
   margin: 0;
 }
+
+.loggedIn {
+  font-size: 0.8em;
+}

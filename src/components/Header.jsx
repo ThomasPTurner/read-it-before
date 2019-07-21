@@ -4,7 +4,8 @@ import '../styles/heading.css'
 function Header({ topic }) {
     return (
         <div className='headingContainer'>
-            <h2 id="topicSubHeading" className='headings'>{topic}</h2>
+                    <h1 id="mainHeading" className="headings">Read-it before</h1>
+            {topic ? <h2 id="topicSubHeading" className='headings'>{topic}</h2> : null }
         </div>
     );
 }

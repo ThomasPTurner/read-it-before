@@ -13,10 +13,9 @@ function App() {
   return (
     <div className="App">
       <div className="headingContainer">
-        <h1 id="mainHeading" className="headings">Read-it before</h1>
         <Router> 
           <Header path="topics/:topic"/>
-          <Header path="/articles/:article_id"/>
+          <Header path="articles/:article_id"/>
         </Router>
       </div>
       <Nav className="nav" />

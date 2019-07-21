@@ -24,7 +24,7 @@ class Nav extends Component {
                         </Link>)
                     )}
                 </nav>
-                <CurrentUser className='currentUser'/>
+                <CurrentUser user="happyamy2016" className='userData'/>
             </div>
         );
     }
@@ -37,6 +37,7 @@ class Nav extends Component {
             topics
         })
     }
+    
 }
 
 export default Nav;

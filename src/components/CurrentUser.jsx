@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
 import '../styles/nav.css'
+import React from 'react';
 
-class CurrentUser extends Component {
-    render() {
-        return (
-            <div>
-                <p className="currentUser">happyamy2016</p>
-            </div>
-        );
-    }
+function CurrentUser({user}) {
+    return (
+        <div className= "currentUser">
+            <p>
+                <span className="loggedIn">
+                    logged in:
+                </span>
+                {user}
+            </p>
+        </div>
+    );
+
 }
-
-export default CurrentUser;
+export default CurrentUser

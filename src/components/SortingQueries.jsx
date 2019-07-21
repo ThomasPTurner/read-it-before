@@ -9,8 +9,9 @@ class SortingQueries extends Component {
         limit: 10
     }
     render () {
-        const options = ['created_at', 'votes', 'author']
         const { order, p, limit } = this.state
+        const { otherSearchOptions } = this.props
+        const options = ['created_at', 'votes', 'author', ...otherSearchOptions]
         return (<form className="sortQueries">
             <select id='sort_by' onChange={this.handleChange} >
                { options.map(option => (
@@ -37,10 +38,13 @@ class SortingQueries extends Component {
             [id]: value
         })
     }
+
     handleSubmit = (event) => {
+        const { applyQueries } = this.props
         event.preventDefault()
-        this.props.applyQueries(this.state)
-    }
+        applyQueries(this.state)
+    };
+
     orderToggle = (event) => {
         event.preventDefault()
         const {target: { innerText }} = event

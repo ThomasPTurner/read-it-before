@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Link } from '@reach/router';
 import Votes from './Votes';
 import '../styles/ArticleCard.css'
+import utils from '../utils/utils'
 
 class ArticleCard extends Component {
     render() {
-        const { clickDelete, article: { title, votes, id, author, comment_count }} = this.props
+        const { clickDelete, article: { title, votes, id, author, comment_count, created_at}} = this.props
         return ( 
             <div className='card articleCard'>
                 <Link className="articleTitle" to={`/articles/${id}`}>
@@ -15,6 +16,7 @@ class ArticleCard extends Component {
                 <div className="information">
                     <p className="author" >{author}</p>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>
+                    <p className="timeSince">{utils.timeSince(created_at)}</p>
                     {(author === 'happyamy2016') ? <button id={id} onClick={clickDelete}>Delete</button> : null}
                 </div>
             </div>

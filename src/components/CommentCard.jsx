@@ -1,8 +1,9 @@
 import React from 'react';
 import Votes from './Votes';
 import '../styles/CommentCard.css'
+import utils from '../utils/utils'
 
-function CommentCard({clickDelete, comment: {id, author, body, votes}}) {
+function CommentCard({clickDelete, timeSince, comment: {id, author, body, votes, created_at}}) {
     return (
         <div className="commentCard card">
             <div className="commentHeading">
@@ -11,6 +12,7 @@ function CommentCard({clickDelete, comment: {id, author, body, votes}}) {
             </div>
             <p className="body">{body}</p>
             <Votes parentId={id} votes={votes} voteType="comments"/>
+            <p className="timeSince">{utils.timeSince(created_at)}</p>
         </div>
     );
 }

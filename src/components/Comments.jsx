@@ -20,7 +20,7 @@ class Comments extends Component {
         return (
             <div className="commentsContainer">
                 <PostComment sliceComments={this.sliceComments} postedCommentToFront={this.postedCommentToFront} article_id={article_id} />
-                <SortingQueries p={p} applyQueries={this.applyQueries}/>
+                <SortingQueries p={p} applyQueries={this.applyQueries} otherSearchOptions={[]}/>
                 { comments.map((comment) => (
                     <CommentCard key={comment.id} comment={comment} clickDelete={this.clickDelete} />
                 ))}
@@ -103,10 +103,9 @@ class Comments extends Component {
     postedCommentToFront = (comment) => {
         this.props.incrementComments()
         this.setState(() => {
-            const newComments = this.state.comments
-            newComments.unshift(comment)
-            return { 
-                comment: newComments
+            const { comments } = this.state
+            return {
+                comments: [comment, ...comments]
             }
         })
     }
