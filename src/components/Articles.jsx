@@ -14,11 +14,12 @@ class Articles extends Component {
         sort_by: undefined,
         order: undefined,
         p: 1,
-        limit: undefined
+        limit: 10,
+        total_count: 0
     }
 
     render() {
-        const { articles, isLoading, p } = this.state
+        const { articles, isLoading, p, limit, total_count } = this.state
         return ( isLoading ? <p>Loading...</p> 
             : 
             <div>
@@ -31,7 +32,7 @@ class Articles extends Component {
                         <ArticleCard article={article} key={`${article.id}-card`} clickDelete={this.clickDelete} className='card'/>
                     ))}
                 </main>
-                <PreviousNext turnPage={this.turnPage} p={p} />
+                <PreviousNext limit={limit} max={total_count} turnPage={this.turnPage} p={p} />
             </div>
         );
     }
@@ -63,9 +64,10 @@ class Articles extends Component {
     }
 
     fetchArticles = async (params) => {
-        const { articles } = await API.getArticles(params)
+        const { articles, total_count } = await API.getArticles(params)
         this.setState({
-            articles
+            articles,
+            total_count
         })
     }
 
@@ -98,25 +100,29 @@ class Articles extends Component {
         API.deleteArticle(id)
         .catch(() => {
                 this.setState(() => {
-                    const { articles } = this.state
+                    const { articles, total_count } = this.state
                     articles.splice(index, 0, removedArticle)
-                    return { articles }
+                    return { 
+                        articles,
+                        total_count: +total_count - 1 
+                    }
                 })
             })
     }
 
     removeArticleFromState = (id) => {
-        const { articles } = this.state
+        const { articles: oldArticles } = this.state
         let output = []
-        articles.forEach(({id: article_id} , i)=> {
-            if (+article_id === +id) {
-                const [removedArticle] = articles.splice(i, 1)
-                output = [removedArticle, i]
-            }
-            this.setState({
-                articles
+        this.setState(()=> {
+            const articles = oldArticles.filter(({id: article_id}, i) => {
+                if (+id === +article_id) {
+                    output = [oldArticles[i], i]
+                }
+                return (+id !== +article_id)
             })
+            return { articles } 
         })
+
         return output
     }
 }

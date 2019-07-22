@@ -12,7 +12,7 @@ class ArticleCard extends Component {
                 <Link className="articleTitle" to={`/articles/${id}`}>
                     <h3 className="articleTitle">{title}</h3>
                 </Link>
-                <Votes classname="votes" parentId={id} votes={votes} voteType="articles"/>
+                <Votes className="votes" parentId={id} votes={votes} voteType="articles"/>
                 <div className="information">
                     <p className="author" >{author}</p>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>

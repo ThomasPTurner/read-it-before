@@ -12,11 +12,12 @@ class Comments extends Component {
         sort_by: undefined,
         order: undefined,
         p: 1,
-        limit: undefined
+        limit: 10,
+        total_count: 0
     }
     render() {
         const { article_id } = this.props
-        const { comments, p } = this.state
+        const { comments, p, total_count, limit } = this.state
         return (
             <div className="commentsContainer">
                 <PostComment sliceComments={this.sliceComments} postedCommentToFront={this.postedCommentToFront} article_id={article_id} />
@@ -24,7 +25,7 @@ class Comments extends Component {
                 { comments.map((comment) => (
                     <CommentCard key={comment.id} comment={comment} clickDelete={this.clickDelete} />
                 ))}
-                <PreviousNext p={p} turnPage={this.turnPage}/>
+                <PreviousNext p={p} max={total_count} turnPage={this.turnPage} limit={limit}/>
             </div>
         );
     }
@@ -34,16 +35,18 @@ class Comments extends Component {
     }
 
     componentDidUpdate(prevProps, {sort_by: prevSort_by, order: prevOrder, p: prevP, limit: prevLimit}) {
-        const {sort_by, order, limit, p} = this.state
+        let {sort_by, order, limit, p} = this.state
         if (sort_by !== prevSort_by || order !== prevOrder || p !== prevP || limit !== prevLimit) {
+            if (p <= 0) p = 1
             this.updateComments({ sort_by, order, limit, p})
         }
     }
     
     fetchComments = (config) => {
         API.getComments(config)
-            .then( ({comments}) => {
+            .then( ({comments, total_count}) => {
                 this.setState({
+                    total_count,
                     comments
                 })
             } )
@@ -86,25 +89,30 @@ class Comments extends Component {
     }
 
     removeCommentFromState = (id) => {
-        const { comments } = this.state
+        const { comments: oldComments, total_count } = this.state
         let output = []
-        comments.forEach(({id: comment_id} , i)=> {
-            if (+comment_id === +id) {
-                const [removedComment] = comments.splice(i, 1)
-                output = [removedComment, i]
-            }
-            this.setState({
-                comments
+        this.setState(()=> {
+            const comments = oldComments.filter(({id: comment_id}, i) => {
+                if (+id === +comment_id) {
+                    output = [oldComments[i], i]
+                }
+                return (+id !== +comment_id)
             })
+            return { 
+                comments,
+                total_count: +total_count - 1
+            } 
         })
+
         return output
     }
     
     postedCommentToFront = (comment) => {
         this.props.incrementComments()
         this.setState(() => {
-            const { comments } = this.state
+            const { comments, total_count } = this.state
             return {
+                total_count: +total_count + 1,
                 comments: [comment, ...comments]
             }
         })
