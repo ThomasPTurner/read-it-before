@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
 import '../styles/PostComment.css'
+import UserContext from './context/UserContext';
 
 class PostComment extends Component {
     state = {
@@ -35,10 +36,9 @@ class PostComment extends Component {
         event.preventDefault()
         const { commentBody: body } = this.state
         const { article_id, postedCommentToFront, sliceComments } = this.props
-        const author = 'happyamy2016'
         if (body !== '') {
-            postedCommentToFront({ votes: 0, body, author, created_at: Date.now(), id: Date.now()})
-            await API.postComment({ body, username: author, article_id})
+            postedCommentToFront({ votes: 0, body, author: this.context, created_at: Date.now(), id: Date.now()})
+            await API.postComment({ body, username: this.context, article_id})
                 .then (({comment})=> {
                     sliceComments(1, 9)
                     postedCommentToFront(comment)
@@ -57,5 +57,7 @@ class PostComment extends Component {
     }
 
 }
+
+PostComment.contextType = UserContext;
 
 export default PostComment;

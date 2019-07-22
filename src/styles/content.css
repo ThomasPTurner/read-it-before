@@ -4,7 +4,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     border: pink 1px solid;
-
+    overflow-y: scroll;
   }
   
   .card {

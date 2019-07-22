@@ -4,6 +4,7 @@ import Comments from './Comments';
 import '../styles/Article.css'
 import Votes from './Votes';
 import utils from '../utils/utils'
+import UserContext from './context/UserContext';
 
 class Article extends Component {
     state = {
@@ -18,7 +19,7 @@ class Article extends Component {
                 <div className="article">
                     <div className="articleHeading">
                         <h1 className="articleTitle" >{title}</h1>
-                        {(author === 'happyamy2016') ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
+                        {(author === this.context) ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
                         <p className="timeSince">{utils.timeSince(created_at)}</p>
                     </div>
                     <Votes className="articleVotes" parentId={id} votes={votes} voteType="articles"/>
@@ -42,16 +43,17 @@ class Article extends Component {
     }
 
     fetchArticleById = () => {
-        const { article_id: id } = this.props
+        const { article_id: id, changeTopic } = this.props
         API.getArticleById({id})
             .then(({article}) => {
+                changeTopic(article.topic)
                 this.setState({
                     article,
                     isLoading: false
                 })
             })
             .catch(()=> {
-                this.propes.navigate(`/error`)
+                this.props.navigate(`/error`)
             })
     }
 
@@ -63,5 +65,7 @@ class Article extends Component {
         })
     }
 }
+
+Article.contextType = UserContext
 
 export default Article;

@@ -2,13 +2,18 @@ import React from 'react';
 import Votes from './Votes';
 import '../styles/CommentCard.css'
 import utils from '../utils/utils'
+import UserContext from './context/UserContext'
 
 function CommentCard({clickDelete, timeSince, comment: {id, author, body, votes, created_at}}) {
     return (
         <div className="commentCard card">
             <div className="commentHeading">
                 <h4 className="commentAuthor">{author}</h4>
-                {(author === 'happyamy2016') ? <button id={id} onClick={clickDelete}>Delete</button> : null}
+                <UserContext.Consumer>
+                    {user => (
+                        (user === author) ? <button id={id} onClick={clickDelete}>Delete</button> : null
+                    )}
+                </UserContext.Consumer>
             </div>
             <p className="body">{body}</p>
             <Votes parentId={id} votes={votes} voteType="comments"/>

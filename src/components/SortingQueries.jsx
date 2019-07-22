@@ -34,10 +34,12 @@ class SortingQueries extends Component {
     }
     
     handleChange = ({ target: { value, id } }) => {
-        if (id === 'p' || id === 'limit' && value < 1) {
-            this.setState({
-                [id]: 1
-            })
+        if (id === 'p' || id === 'limit') {
+            if (value < 1) {
+                this.setState({
+                    [id]: 1
+                })
+            }
         } else {
             this.setState({
                 [id]: value

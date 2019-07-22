@@ -1,11 +1,16 @@
 import React from 'react';
-import '../styles/heading.css'
+import '../styles/heading.css';
+import TopicContext from './context/TopicContext';
 
-function Header({ topic }) {
+function Header() {
     return (
         <div className='headingContainer'>
             <h1 id="mainHeading" className="headings">Read-it before</h1>
-            {topic ? <h2 id="topicSubHeading" className='headings'>{topic}</h2> : null }
+            <TopicContext.Consumer>
+                {topic => {
+                    return topic ? <h2 id="topicSubHeading" className='headings'>{topic}</h2> : null 
+                }}
+            </TopicContext.Consumer>
         </div>
     );
 }

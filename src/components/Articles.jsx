@@ -6,6 +6,7 @@ import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
 import { Link } from '@reach/router';
 
+
 class Articles extends Component {
 
     state = {
@@ -47,7 +48,9 @@ class Articles extends Component {
     componentDidUpdate({topic: prevTopic}, {sort_by: prevSort_by, order: prevOrder, p: prevP, limit: prevLimit}) {
         const { topic } = this.props
         const {sort_by, order, limit, p} = this.state
-        if (prevTopic !== topic) this.updateArticles({topic})
+        if (prevTopic !== topic) {
+            this.updateArticles({topic})
+        }
         if (sort_by !== prevSort_by || order !== prevOrder || p !== prevP || limit !== prevLimit) {
             this.updateArticles({topic, sort_by, order, limit, p})
         }
@@ -126,5 +129,6 @@ class Articles extends Component {
         return output
     }
 }
+
 
 export default Articles;

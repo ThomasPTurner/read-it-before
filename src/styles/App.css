@@ -1,20 +1,18 @@
 .App {
   display: grid;
   grid-template-columns: 1fr; 
-  grid-template-rows: 2.5em 1.1em 10fr; 
+  grid-template-rows: 2.5em 1.3em 1fr 2em; 
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
   grid-template-areas: 
     'heading'
     'navigation'
-    'body';
+    'body'
+    'footer';
   background: #fcfffe;
   font-family: 'Source Sans Pro', sans-serif;
 }
 
-body {
-  margin: 0
-}
 
 .nav {
   grid-area: navigation;
@@ -22,6 +20,7 @@ body {
 
 .content {
   grid-area: body;
+  max-height: 75vh
 }
 
 .headingContainer {
@@ -29,6 +28,10 @@ body {
   display: flex;
   align-items: flex-end;
   flex-direction: row;
+}
+
+.footer {
+  grid-area: footer;
 }
 
 a {

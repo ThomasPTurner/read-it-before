@@ -3,6 +3,7 @@ import { Link } from '@reach/router';
 import Votes from './Votes';
 import '../styles/ArticleCard.css'
 import utils from '../utils/utils'
+import UserContext from './context/UserContext'
 
 class ArticleCard extends Component {
     render() {
@@ -17,11 +18,13 @@ class ArticleCard extends Component {
                     <p className="author" >{author}</p>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>
                     <p className="timeSince">{utils.timeSince(created_at)}</p>
-                    {(author === 'happyamy2016') ? <button id={id} onClick={clickDelete}>Delete</button> : null}
+                    {(author === this.context) ? <button id={id} onClick={clickDelete}>Delete</button> : null}
                 </div>
             </div>
         );
     }
 }
+
+ArticleCard.contextType = UserContext
 
 export default ArticleCard;

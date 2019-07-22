@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from '../utils/api-utils';
 import '../styles/PostArticles.css'
+import UserContext from './context/UserContext';
 
 class PostArticle extends Component {
     state = {
@@ -49,9 +50,8 @@ class PostArticle extends Component {
     handleSubmit = async (event) => {
         event.preventDefault()
         const { body, title, topic } = this.state
-        const author = 'happyamy2016'
         if (body !== '' && title !== '' && topic !== '' && topic !== 'choose a topic...') {
-            await API.postArticle({ topic, body, title, username: author, })
+            await API.postArticle({ topic, body, title, username: this.context })
                 .then (async ({article: { id } })=> {
                     this.props.navigate(`/articles/${ id }`)
                 })
@@ -66,5 +66,7 @@ class PostArticle extends Component {
     }
 
 }
+
+PostArticle.contextType = UserContext;
 
 export default PostArticle;
