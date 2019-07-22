@@ -12,19 +12,14 @@ import PostArticle from './components/PostArticle';
 function App() {
   return (
     <div className="App">
-      <div className="headingContainer">
-        <Router> 
-          <Header path="topics/:topic"/>
-          <Header path="articles/:article_id"/>
-        </Router>
-      </div>
+      <Header className="headingContainer"/>
       <Nav className="nav" />
-      <Router> 
-        <Articles path="topics/:topic"/>
-        <Articles path="/"/>
-        <Article path="/articles/:article_id" />
-        <PostArticle path="postarticle" />
+      <Router>
+        <Articles className="content" path="/topics/:topic"/>
+        <Article className="content" path="/articles/:article_id" />
+        <PostArticle className="content" path="/postarticle" />
         <Error default path="/error" />
+        <Articles className="content" path="/"/>
       </Router>
       <Footer />
     </div>

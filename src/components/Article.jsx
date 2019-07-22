@@ -10,6 +10,7 @@ class Article extends Component {
         article: {},
         isLoading: true,
     }
+
     render() {
         const { isLoading, article: { title, body, id, votes, author, created_at } } = this.state
         return isLoading ? <p>Loading...</p> : (
@@ -27,15 +28,17 @@ class Article extends Component {
             </div>
         );
     }
+
     componentDidMount() {
         this.fetchArticleById()
     }
 
     clickDelete = async (event) => {
         const { article: { id, topic }} = this.state
-        event.preventDefault()
         await API.deleteArticle(id)
-        window.location.href = `/topics/${topic}`
+        this.props.navigate(`/topics/${topic}`, {
+            replace: true
+        })
     }
 
     fetchArticleById = () => {
@@ -48,7 +51,7 @@ class Article extends Component {
                 })
             })
             .catch(()=> {
-                window.location.href = `/error`
+                this.propes.navigate(`/error`)
             })
     }
 

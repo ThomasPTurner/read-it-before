@@ -7,6 +7,7 @@ import PreviousNext from './PreviousNext';
 import { Link } from '@reach/router';
 
 class Articles extends Component {
+
     state = {
         articles: [],
         isLoading: true,
@@ -34,12 +35,14 @@ class Articles extends Component {
             </div>
         );
     }
+
     componentDidMount() {
         this.fetchArticles()
         this.setState({ 
             isLoading: false
         })
     }
+
     componentDidUpdate({topic: prevTopic}, {sort_by: prevSort_by, order: prevOrder, p: prevP, limit: prevLimit}) {
         const { topic } = this.props
         const {sort_by, order, limit, p} = this.state

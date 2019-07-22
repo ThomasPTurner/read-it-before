@@ -53,7 +53,7 @@ class PostArticle extends Component {
         if (body !== '' && title !== '' && topic !== '' && topic !== 'choose a topic...') {
             await API.postArticle({ topic, body, title, username: author, })
                 .then (async ({article: { id } })=> {
-                    window.location.href = `/articles/${ id }`
+                    this.props.navigate(`/articles/${ id }`)
                 })
         }
     }

@@ -16,20 +16,8 @@ body {
   margin: 0
 }
 
-a {
-  text-decoration: none;
-}
-
-p {
-  margin: 0;
-}
-
 .nav {
   grid-area: navigation;
-}
-
-.headingContainer {
-  grid-area: heading;
 }
 
 .content {
@@ -37,7 +25,16 @@ p {
 }
 
 .headingContainer {
+  grid-area: heading;
   display: flex;
   align-items: flex-end;
   flex-direction: row;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
 }
