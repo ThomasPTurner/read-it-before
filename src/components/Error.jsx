@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-function Error(props) {
-    return (
-        <div>
-            <h1>404'd</h1>
-        </div>
-    );
+class Error extends Component {
+    render() {
+        if (!this.props.location.state) {
+            return (
+            <div>
+                <h1>error 404</h1>
+                <h3>page not found</h3>
+            </div>
+            )
+        }
+        const { code, msg } = this.props.location.state
+        return (
+            <div>
+                <h1>error {code}</h1>
+                <h3>{msg}</h3>
+            </div>
+        );
+    }
 }
 
-export default Error
+export default Error;

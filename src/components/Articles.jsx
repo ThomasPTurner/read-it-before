@@ -41,9 +41,7 @@ class Articles extends Component {
 
     componentDidMount() {
         this.fetchArticles()
-        this.setState({ 
-            isLoading: false
-        })
+        this.checkForBadTopic()
     }
 
     componentDidUpdate({topic: prevTopic}, {sort_by: prevSort_by, order: prevOrder, p: prevP, limit: prevLimit}) {
@@ -68,10 +66,14 @@ class Articles extends Component {
     }
 
     fetchArticles = async (params) => {
+        this.setState({
+            isLoading: true
+        })
         const { articles, total_count } = await API.getArticles(params)
         this.setState({
             articles,
-            total_count
+            total_count,
+            isLoading: false
         })
     }
 
@@ -128,6 +130,24 @@ class Articles extends Component {
         })
 
         return output
+    }
+
+    checkForBadTopic = async ()=> {
+        const { topic, navigate } = this.props
+        console.log(this.props.topic)
+        if (topic) {
+            const topicsObjects = await API.getTopics()
+            const topicsArray = topicsObjects.map(({slug}) => slug)
+            if (topicsArray.includes(topic)) {
+                navigate(`/error`, { 
+                    replace: true,
+                    state: {
+                        code: 404,
+                        msg: 'Topic not found'
+                    }
+                })  
+            }
+        } 
     }
 }
 

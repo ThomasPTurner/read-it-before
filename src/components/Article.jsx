@@ -44,7 +44,7 @@ class Article extends Component {
     }
 
     fetchArticleById = () => {
-        const { article_id: id, changeTopic } = this.props
+        const { article_id: id, changeTopic, navigate } = this.props
         API.getArticleById({id})
             .then(({article}) => {
                 changeTopic(article.topic)
@@ -53,8 +53,14 @@ class Article extends Component {
                     isLoading: false
                 })
             })
-            .catch(()=> {
-                this.props.navigate(`/error`)
+            .catch(({response: {data: {code, msg}}})=> {
+                navigate(`/error`, { 
+                    replace: true,
+                    state: {
+                        code,
+                        msg
+                    }
+                })
             })
     }
 
