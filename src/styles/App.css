@@ -1,7 +1,8 @@
 .App {
   display: grid;
+  height: 98vh;
   grid-template-columns: 1fr; 
-  grid-template-rows: 2.5em 1.3em 1fr 2em; 
+  grid-template-rows: 1fr 1fr 15fr 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px; 
   grid-template-areas: 
@@ -18,20 +19,11 @@
   grid-area: navigation;
 }
 
-.content {
-  grid-area: body;
-  max-height: 75vh
-}
-
 .headingContainer {
   grid-area: heading;
   display: flex;
   align-items: flex-end;
   flex-direction: row;
-}
-
-.footer {
-  grid-area: footer;
 }
 
 a {

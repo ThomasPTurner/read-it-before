@@ -5,6 +5,7 @@ import '../styles/content.css'
 import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
 import { Link } from '@reach/router';
+import Loading from './Loading';
 
 
 class Articles extends Component {
@@ -21,7 +22,7 @@ class Articles extends Component {
 
     render() {
         const { articles, isLoading, p, limit, total_count } = this.state
-        return ( isLoading ? <p>Loading...</p> 
+        return ( isLoading ? <Loading />
             : 
             <div>
                 <Link to="/postarticle">

@@ -1,5 +1,20 @@
 .footer {
+    grid-area: footer;
+    display: grid;
     margin: 0;
     text-align: center;
-    background-color: lavenderblush
+    background-color: lavenderblush;
+    grid-template-columns: 2em auto;
+    grid-template-areas: "footerIcon footerText";
+}
+
+.gitHubIcon {
+    grid-area: footerIcon;
+    object-fit: contain;
+    height: 2em;
+    align-items: left;
+}
+
+.footerText {
+    grid-area: footerText;
 }

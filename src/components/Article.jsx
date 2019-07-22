@@ -5,6 +5,7 @@ import '../styles/Article.css'
 import Votes from './Votes';
 import utils from '../utils/utils'
 import UserContext from './context/UserContext';
+import Loading from './Loading';
 
 class Article extends Component {
     state = {
@@ -14,8 +15,8 @@ class Article extends Component {
 
     render() {
         const { isLoading, article: { title, body, id, votes, author, created_at } } = this.state
-        return isLoading ? <p>Loading...</p> : (
-            <div >
+        return isLoading ? <Loading /> : (
+            <div className="content">
                 <div className="article">
                     <div className="articleHeading">
                         <h1 className="articleTitle" >{title}</h1>

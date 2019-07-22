@@ -29,7 +29,7 @@ class App extends Component {
           <Error default path="/error" />
           <Articles className="content" path="/" />
         </Router>
-        <Footer className="footer" />
+        <Footer />
       </div>
   )};
 
