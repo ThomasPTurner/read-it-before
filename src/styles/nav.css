@@ -4,13 +4,14 @@
     flex-direction: row;
     max-width: 100%;
     justify-content: left;
+    overflow-x: auto;
   }
   
 .navLink {
   max-height: 100%;
   padding-left: 2px;
   padding-right: 5px;
-  margin:0
+  margin:1px
 }
 
 .currentUser {

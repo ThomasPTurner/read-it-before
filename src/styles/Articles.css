@@ -1,0 +1,6 @@
+.articlesContainer {
+    display: flex;
+    flex-direction: rows;
+    justify-content: start;
+    overflow-y: scroll;
+}

@@ -6,6 +6,7 @@
     background-color: lavenderblush;
     grid-template-columns: 2em auto;
     grid-template-areas: "footerIcon footerText";
+    overflow: hidden;
 }
 
 .gitHubIcon {

@@ -12,10 +12,16 @@
     ". . postButton"
 }
 .postButton {
+    margin-top: 3px;
     grid-area: postButton;
     width: 10em;
     height: 1.5em;
     vertical-align: bottom;
+    text-align: center;
+}
+
+.postButton :hover {
+    cursor: pointer; 
 }
 
 .titleLabel {

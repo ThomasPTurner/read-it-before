@@ -23,7 +23,7 @@ class SortingQueries extends Component {
             <label htmlFor="p">Page</label>
             <input onChange={this.handleChange} id="limit" type="number" value={limit} placeholder={limit} className="textbox"></input>
             <label htmlFor="limit">Results</label>
-            <button type='submit' onClick={this.handleSubmit}>Re-Order</button>
+            <button type='submit' onClick={this.handleSubmit}>Order</button>
         </form>)
     };
     componentDidUpdate({ p: prevP }, prevState) {

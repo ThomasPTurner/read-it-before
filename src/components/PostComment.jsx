@@ -13,7 +13,7 @@ class PostComment extends Component {
         return posting ?  
             <form className="commentPostDialogueContainer">
                 <label className="commentBodyLabel" htmlFor="commentBody">Comment:</label>
-                <input className="commentBodyInput" onChange={this.handleChange} type='text' id='commentBody' />
+                <textarea className="commentBodyInput" onChange={this.handleChange} type='text' id='commentBody' />
                 <button className="postButton" onClick={this.handleSubmit} type='submit'>Submit</button>
             </form> 
             : <button className="postButton" onClick={this.togglePostForm}>Post a comment</button>;

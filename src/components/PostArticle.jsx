@@ -24,7 +24,7 @@ class PostArticle extends Component {
                 <label className="titleLabel" htmlFor="title">Title:</label>
                 <input className="titleInput" onChange={this.handleChange} type='text' id='title' />
                 <label className="bodyLabel" htmlFor="body">Body:</label>
-                <input className="bodyInput" onChange={this.handleChange} type='text' id='body' />
+                <textarea className="bodyInput" onChange={this.handleChange} type='text' id='body' />
                 <button className="postButton" onClick={this.handleSubmit} type='submit'>Submit</button>
             </form>
         )

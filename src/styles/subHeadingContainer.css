@@ -1,9 +1,9 @@
 .subHeading {
-    border: red 1px solid;
+    border: grey solid 1px;
     display: grid;
     grid-template-rows: 4fr 1fr;
     grid-template-columns: auto;
-    grid-template-areas: "navigation user"
+    grid-template-areas: "navigation user";
 }
 
 .userData {

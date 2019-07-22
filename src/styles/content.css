@@ -4,9 +4,8 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    border: pink 1px solid;
-    overflow-y: scroll;
-    height: 88vh;
+    overflow-y: auto;
+    max-height: 77vh
   }
   
   .card {

@@ -17,3 +17,11 @@
     text-align: right;
     margin: 0;
 }
+
+.previous:hover {
+    cursor: pointer; 
+}
+
+.next:hover {
+    cursor: pointer; 
+}

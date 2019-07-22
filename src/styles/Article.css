@@ -1,5 +1,6 @@
 .article {
     display: grid;
+    padding: 1px;
     grid-template-rows: auto auto;
     grid-template-columns: 3em auto;
     grid-template-areas: 
@@ -10,10 +11,15 @@
 .articleTitle {
     grid-area: articleTitle;
     max-width: 60vw;
+    padding: 1px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
 }
 
 .articleBody {
     grid-area: body;
+    padding: 4px;
 }
 
 .articleVotes {

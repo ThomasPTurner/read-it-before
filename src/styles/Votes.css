@@ -27,5 +27,5 @@
     padding: 0.5em; 
     grid-area: downArrow;
     margin: 0;
-
+    transform: rotate(180deg)
 }

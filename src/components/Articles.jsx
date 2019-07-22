@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../utils/api-utils'
 import ArticleCard from './ArticleCard';
 import '../styles/content.css'
+import '../styles/Articles.css'
 import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
 import { Link } from '@reach/router';
@@ -24,17 +25,17 @@ class Articles extends Component {
         const { articles, isLoading, p, limit, total_count } = this.state
         return ( isLoading ? <Loading />
             : 
-            <div>
-                <Link to="/postarticle">
+            <div className='content articlesContainter'>
+                <Link className="postButton" to="/postarticle">
                     Post an article
                 </Link>
                 <SortingQueries p={p} applyQueries={this.applyQueries} otherSearchOptions={['comment_count']} />
-                <main className='content'>
+                <main>
                     {articles.map((article) => (
                         <ArticleCard article={article} key={`${article.id}-card`} clickDelete={this.clickDelete} className='card'/>
                     ))}
+                    <PreviousNext limit={limit} max={total_count} turnPage={this.turnPage} p={p} />
                 </main>
-                <PreviousNext limit={limit} max={total_count} turnPage={this.turnPage} p={p} />
             </div>
         );
     }
@@ -134,11 +135,10 @@ class Articles extends Component {
 
     checkForBadTopic = async ()=> {
         const { topic, navigate } = this.props
-        console.log(this.props.topic)
         if (topic) {
             const topicsObjects = await API.getTopics()
             const topicsArray = topicsObjects.map(({slug}) => slug)
-            if (topicsArray.includes(topic)) {
+            if (!topicsArray.includes(topic)) {
                 navigate(`/error`, { 
                     replace: true,
                     state: {

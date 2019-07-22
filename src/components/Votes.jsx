@@ -13,7 +13,7 @@ class Votes extends Component {
             <div className="votes">
                 <p className="votesUpArrow" id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
                 <p className="votesCount" >{votes}</p>
-                <p className="votesDownArrow" id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇩</p>
+                <p className="votesDownArrow" id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇧</p>
             </div>
         );
     }
