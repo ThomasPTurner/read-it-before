@@ -29,11 +29,11 @@
     height: 4em;
 }
 .information {
+    font-size: 0.75em;
     grid-area: information;
     display: flex;
     flex-direction: rows;
-    justify-content: stretch;
-    overflow-x: hidden;
+    justify-content: space-between;
     padding-bottom: 2px;
 }
 .commentCount {

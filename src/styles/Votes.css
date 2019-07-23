@@ -1,7 +1,7 @@
 .votes {
     grid-area: votes;
     display: grid;
-    grid-template-rows: 2em 1em 2em;
+    grid-template-rows: 2em 0.9em 2em;
     grid-template-areas: 
         'upArrow'
         'voteCount'
@@ -13,19 +13,27 @@
 }
 .votesCount {
     grid-area: voteCount;
-    align-content: center;
     margin: 0;
+    line-height: 100%
 }
 
 .votesUpArrow {
-    padding: 0.5em ; 
+    padding: 0.4em ; 
     grid-area: upArrow;
     margin: 0;
 }
 
 .votesDownArrow {
-    padding: 0.5em; 
+    padding: 0.4em; 
     grid-area: downArrow;
     margin: 0;
     transform: rotate(180deg)
+}
+
+.votedUp {
+    color: red
+}
+
+.votedDown {
+    color: purple
 }

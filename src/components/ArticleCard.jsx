@@ -7,7 +7,7 @@ import UserContext from './context/UserContext'
 
 class ArticleCard extends Component {
     render() {
-        const { clickDelete, article: { title, votes, id, author, comment_count, created_at}} = this.props
+        const { article: { title, votes, id, author, comment_count, created_at}} = this.props
         return ( 
             <div className='card articleCard'>
                 <Link className="articleTitle" to={`/articles/${id}`}>
@@ -18,7 +18,6 @@ class ArticleCard extends Component {
                     <p className="author" >{author}</p>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>
                     <p className="timeSince">{utils.timeSince(created_at)}</p>
-                    {(author === this.context) ? <button id={id} onClick={clickDelete}>Delete</button> : null}
                 </div>
             </div>
         );

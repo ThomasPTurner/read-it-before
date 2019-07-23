@@ -18,14 +18,14 @@ class Article extends Component {
         return isLoading ? <Loading /> : (
             <div className="content">
                 <div className="article">
+                    <p className="timeSince">{utils.timeSince(created_at)}</p>
                     <div className="articleHeading">
                         <h1 className="articleTitle" >{title}</h1>
-                        {(author === this.context) ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
-                        <p className="timeSince">{utils.timeSince(created_at)}</p>
                     </div>
                     <Votes className="articleVotes" parentId={id} votes={votes} voteType="articles"/>
                     <p className="articleBody" >{body}</p>
                 </div>
+                {(author === this.context) ? <button className="articleDeleteButton" id={id} onClick={this.clickDelete}>Delete</button> : null}
                 <Comments incrementComments={this.incrementComments} article_id={id}/>
             </div>
         );

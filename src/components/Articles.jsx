@@ -100,39 +100,6 @@ class Articles extends Component {
         })
     }
 
-    clickDelete = (event) => {
-        event.preventDefault()
-        const { target: {id} } = event
-        const [removedArticle, index] = this.removeArticleFromState(id)
-        API.deleteArticle(id)
-        .catch(() => {
-                this.setState(() => {
-                    const { articles, total_count } = this.state
-                    articles.splice(index, 0, removedArticle)
-                    return { 
-                        articles,
-                        total_count: +total_count - 1 
-                    }
-                })
-            })
-    }
-
-    removeArticleFromState = (id) => {
-        const { articles: oldArticles } = this.state
-        let output = []
-        this.setState(()=> {
-            const articles = oldArticles.filter(({id: article_id}, i) => {
-                if (+id === +article_id) {
-                    output = [oldArticles[i], i]
-                }
-                return (+id !== +article_id)
-            })
-            return { articles } 
-        })
-
-        return output
-    }
-
     checkForBadTopic = async ()=> {
         const { topic, navigate } = this.props
         if (topic) {

@@ -9,11 +9,13 @@ class Votes extends Component {
     }
     render() {
         const { votes, changedVotes } = this.state
+        const votedUp = (changedVotes > 0)
+        const votedDown = (changedVotes < 0)
         return (
             <div className="votes">
-                <p className="votesUpArrow" id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
-                <p className="votesCount" >{votes}</p>
-                <p className="votesDownArrow" id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇧</p>
+                <p className={`votesUpArrow ${ votedUp ? 'votedUp': ''}`} id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
+                <p className={`votesCount ${ votedUp ? 'votedUp': (votedDown ? 'votedDown' : '')}`} >{votes}</p>
+                <p className={`votesDownArrow ${ votedDown ? 'votedDown': ''}`} id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇧</p>
             </div>
         );
     }
