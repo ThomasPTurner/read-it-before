@@ -12,8 +12,9 @@
 
 .sortQueries {
     display:flex;
-    justify-content: space-between;
+    justify-content:left;
     overflow-x: hidden;
+    margin-top: 3px;
 }
 
 .orderButton {
