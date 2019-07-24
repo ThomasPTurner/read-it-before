@@ -8,15 +8,16 @@ class PostArticle extends Component {
         title: '',
         body: '',
         topic: '',
-        topics: []
+        topics: [],
+        badInput: false
     }
     render() {
-        const { topics } = this.state 
+        const { topics, badInput } = this.state 
         return (            
             <form className="postDialogueContainer">
                 <label className="topicLabel" htmlFor="topic">Topic:</label>
                 <select placeholder="choose a topic..." className="topicInput" onChange={this.handleChange} id='topic'>
-                    <option className='topicOption' key="default-option">choose a topic....</option>
+                <option value="" disabled selected hidden>Select a topic</option>
                     {topics.map(({ slug }) =>(
                             <option key={`${slug}-option`} className='topicOption'>{slug}</ option>
                     ))}
@@ -26,6 +27,7 @@ class PostArticle extends Component {
                 <label className="bodyLabel" htmlFor="body">Body:</label>
                 <textarea className="bodyInput" onChange={this.handleChange} type='text' id='body' />
                 <button className="postButton" onClick={this.handleSubmit} type='submit'>Submit</button>
+                { badInput ? <p className="badInput">Please complete all fields</p> : null }
             </form>
         )
     }
@@ -34,6 +36,7 @@ class PostArticle extends Component {
         this.fetchTopics()
     }
     
+
     togglePostForm = () => {
         const { posting } = this.state
         this.setState({
@@ -55,6 +58,10 @@ class PostArticle extends Component {
                 .then (async ({article: { id } })=> {
                     this.props.navigate(`/articles/${ id }`)
                 })
+        } else {
+            this.setState({
+                badInput: true
+            })
         }
     }
 

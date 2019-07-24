@@ -9,7 +9,7 @@
     ". titleInput titleInput"
     ". bodyLabel ."
     ". bodyInput bodyInput"
-    ". . postButton"
+    ". badInput postButton"
 }
 .postButton {
     margin-top: 3px;
@@ -50,4 +50,9 @@
 .topicInput {
     grid-area: topicInput;
     width: 10em
+}
+
+.badInput {
+    grid-area: badInput;
+    color: red;
 }
