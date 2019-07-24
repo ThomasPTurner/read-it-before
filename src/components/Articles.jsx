@@ -61,9 +61,6 @@ class Articles extends Component {
             isLoading: true
         })
         this.fetchArticles({params: {...params}})
-        this.setState({
-            isLoading: false
-        })
     }
 
     fetchArticles = async (params) => {
