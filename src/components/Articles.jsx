@@ -23,12 +23,11 @@ class Articles extends Component {
 
     render() {
         const { articles, isLoading, p, limit, total_count } = this.state
+        const { navigate } = this.props
         return ( isLoading ? <Loading />
             : 
             <div className='content articlesContainter'>
-                <Link className="postButton" to="/postarticle">
-                    Post an article
-                </Link>
+                <button onClick={()=>navigate("/postarticle")}>Post an article</button>
                 <SortingQueries p={p} applyQueries={this.applyQueries} otherSearchOptions={['comment_count']} />
                 <main>
                     {articles.map((article) => (

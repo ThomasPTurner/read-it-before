@@ -14,6 +14,7 @@ class SortingQueries extends Component {
         const options = ['created_at', 'votes', 'author', ...otherSearchOptions]
         return (<form className="sortQueries">
             <select id='sort_by' onChange={this.handleChange} >
+            <option disabled selected hidden>Sort by...</option>
                { options.map(option => (
                     <option key={option} value={option} >{option}</option>
                 ))}
