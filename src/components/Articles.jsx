@@ -5,7 +5,6 @@ import '../styles/content.css'
 import '../styles/Articles.css'
 import SortingQueries from './SortingQueries';
 import PreviousNext from './PreviousNext';
-import { Link } from '@reach/router';
 import Loading from './Loading';
 
 
@@ -27,7 +26,7 @@ class Articles extends Component {
         return ( isLoading ? <Loading />
             : 
             <div className='content articlesContainter'>
-                <button onClick={()=>navigate("/postarticle")}>Post an article</button>
+                <button className="postArticleButton" onClick={()=>navigate("/postarticle")}>Post an article</button>
                 <SortingQueries p={p} applyQueries={this.applyQueries} otherSearchOptions={['comment_count']} />
                 <main>
                     {articles.map((article) => (

@@ -6,6 +6,7 @@ import Votes from './Votes';
 import utils from '../utils/utils'
 import UserContext from './context/UserContext';
 import Loading from './Loading';
+import { Link } from '@reach/router';
 
 class Article extends Component {
     state = {
@@ -18,6 +19,9 @@ class Article extends Component {
         return isLoading ? <Loading /> : (
             <div className="content">
                 <div className="article">
+                    <Link to={`/users/${author}`}>
+                        <p className="articleAuthor">{`${author}`}</p>
+                    </Link>
                     <p className="timeSince">{utils.timeSince(created_at)}</p>
                     <div className="articleHeading">
                         <h1 className="articleTitle" >{title}</h1>

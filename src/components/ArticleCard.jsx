@@ -15,7 +15,9 @@ class ArticleCard extends Component {
                 </Link>
                 <Votes className="votes" parentId={id} votes={votes} voteType="articles"/>
                 <div className="information">
-                    <p className="author" >{author}</p>
+                    <Link className="author" to={`/users/${author}`}>
+                        <p className="author" >{author}</p>
+                    </Link>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>
                     <p className="timeSince">{utils.timeSince(created_at)}</p>
                 </div>

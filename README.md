@@ -58,7 +58,7 @@ The page reloads if you make edits.<br>
 
 ## Authors
 
-- Thomas Turner - [Github](https://github.com/janders4)
+- Thomas Turner - [Github](https://github.com/thomaspturner)
 
 ## License
 

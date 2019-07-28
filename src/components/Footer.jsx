@@ -6,7 +6,7 @@ function Footer(props) {
         <div className="footer">
             <p className='footerText'>Created by Thomas Turner</p>
             <a  href="https://github.com/ThomasPTurner/read-it-before">
-                <i class="fab fa-github fa-2x"></i>
+                <i className="fab fa-github fa-2x"></i>
             </a>
         </div>
     );

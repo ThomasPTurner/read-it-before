@@ -44,4 +44,9 @@ const deleteArticle = async (id) => {
     await axios.delete(`${baseURL}/articles/${id}`)
 }
 
-export default { deleteArticle, postArticle, patchVotes, deleteComment, getTopics, getArticles, getArticleById, getComments, postComment }
+const getUser = async (id) => {
+    const { data } = await axios.get(`${baseURL}/users/${id}`)
+    return data
+}
+
+export default { getUser, deleteArticle, postArticle, patchVotes, deleteComment, getTopics, getArticles, getArticleById, getComments, postComment }

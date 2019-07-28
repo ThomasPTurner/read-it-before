@@ -16,7 +16,7 @@ class PostArticle extends Component {
         return (            
             <form className="postDialogueContainer">
                 <label className="topicLabel" htmlFor="topic">Topic:</label>
-                <select placeholder="choose a topic..." className="topicInput" onChange={this.handleChange} id='topic'>
+                <select className="topicInput" onChange={this.handleChange} id='topic'>
                 <option value="" disabled selected hidden>Select a topic</option>
                     {topics.map(({ slug }) =>(
                             <option key={`${slug}-option`} className='topicOption'>{slug}</ option>

@@ -4,3 +4,7 @@
     justify-content: flex-start;
     overflow-y: scroll;
 }
+
+.postArticleButton {
+    margin-top: 5px;
+}

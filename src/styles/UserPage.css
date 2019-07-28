@@ -1,0 +1,52 @@
+.userPage {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 2fr;
+    grid-template-rows: 2.5em 1.1em 1fr;
+    grid-template-areas: 'avatar username username'
+        'avatar name name'
+        'avatar userStats userStats'
+}
+
+.name {
+    grid-area: name;
+}
+
+.username {
+    grid-area: username;
+    margin: 0;
+    padding-top: 10px;
+}
+
+
+.userAvatar {
+    grid-area: avatar;
+    max-width: 30vw;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin: 15% 0 15% 0;
+}
+
+.userStats {
+    grid-area: userStats;
+    border: solid black 1px;
+    border-radius: 10px;
+    margin: 10px 3px 45% 3px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+.statistic {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-areas: "statisticLabel statisticNumber"
+}
+
+.statisticLabel {
+    grid-area: statisticLabel;
+}
+
+.statisticNumber {
+    grid-area: statisticNumber;
+}

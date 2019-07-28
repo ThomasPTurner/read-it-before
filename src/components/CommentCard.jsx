@@ -3,12 +3,15 @@ import Votes from './Votes';
 import '../styles/CommentCard.css'
 import utils from '../utils/utils'
 import UserContext from './context/UserContext'
+import { Link } from '@reach/router';
 
 function CommentCard({clickDelete, timeSince, comment: {id, author, body, votes, created_at}}) {
     return (
         <div className="commentCard card">
             <div className="commentHeading">
-                <h4 className="commentAuthor">{author}</h4>
+                <Link className="commentAuthor" to={`/users/${author}`}>
+                    <h4 className="commentAuthor">{author}</h4>
+                </Link>
                 <UserContext.Consumer>
                     {user => (
                         (user === author) ? <button id={id} onClick={clickDelete}>Delete</button> : null
