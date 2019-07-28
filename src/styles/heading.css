@@ -3,10 +3,10 @@
     display: flex;
     align-items: flex-end;
     flex-direction: row;
-    background-color: gray;
+    background-image: linear-gradient(rgb(120,120,120), rgb(128,128,128));
+    /* background-color: gray; */
     color: #c5e3e3;
     justify-content: center;
-    padding: 2px;
 }
 
 .headings {

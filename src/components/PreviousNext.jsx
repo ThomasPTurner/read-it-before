@@ -5,10 +5,10 @@ function PreviousNext({p, limit, max, turnPage}) {
     const lastPage = Math.ceil(+max / limit)
     return (
         <div className="PreviousNext">
-            <p onClick={turnPage} id="prev" className="previous">{(p <= 1) ? '' : 'Prev'}</p>
-            <p onClick={turnPage} id="next" className="next">{(p >= lastPage) ? '' : 'Next'}</p>
+            {(p <= 1) ? null : <button onClick={turnPage} id="prev" className="previous">Prev</button>}
+            {(p >= lastPage) ? null : <button onClick={turnPage} id="next" className="next">Next</button>}
         </div>
     );
 };
 
-export default PreviousNext
+export default PreviousNext 

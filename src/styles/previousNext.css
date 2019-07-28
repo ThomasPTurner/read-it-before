@@ -1,20 +1,19 @@
 .PreviousNext {
+    margin-top: 10px;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
-    grid-template-areas: 'previous next'
+    grid-template-columns: 5em auto 5em; 
+    grid-template-areas: 'previous . next'
 }
 
 .previous {
-    padding-left: 15px;
+    padding: 3px 2em 3px 2em;
     grid-area: previous;
-    text-align: left;
     margin: 0;
 }
 
 .next {
-    padding-right: 15px;
+    padding: 3px 2em 3px 2em;
     grid-area: next;
-    text-align: right;
     margin: 0;
 }
 
