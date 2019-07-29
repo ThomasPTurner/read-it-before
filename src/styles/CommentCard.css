@@ -8,8 +8,8 @@
         'votes body'
         '. timeSince';
     max-height: 100%;
-    border: 1px solid salmon;
-    border-radius: 5px
+    border-radius: 5px;
+    padding: 3px;
 }
 
 .commentHeading {

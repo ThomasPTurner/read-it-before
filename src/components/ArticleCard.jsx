@@ -19,7 +19,7 @@ class ArticleCard extends Component {
                         <p className="author" >{author}</p>
                     </Link>
                     <p className="commentCount">{`Comments: ${comment_count}`}</p>
-                    <p className="timeSince">{utils.timeSince(created_at)}</p>
+                    <p className="articleCardTimeSince">{utils.timeSince(created_at)}</p>
                 </div>
             </div>
         );

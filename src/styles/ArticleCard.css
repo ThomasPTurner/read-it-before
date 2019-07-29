@@ -31,19 +31,26 @@
 .information {
     font-size: 0.75em;
     grid-area: information;
-    display: flex;
-    flex-direction: rows;
-    justify-content: space-between;
+    display: grid;
+    grid-template-areas: "author commentCount timeSince";
+    grid-template-columns: 1fr 1fr 1fr;
     padding-bottom: 2px;
 }
 .commentCount {
+    grid-area: commentCount;
     padding-right: 10px;
     margin: 0;
 }
 
 .author {
+    grid-area: author;
     padding-right: 10px;
     margin: 0;
+}
+
+.articleCardTimeSince {
+    grid-area: timeSince;
+    text-align: left;
 }
 
 

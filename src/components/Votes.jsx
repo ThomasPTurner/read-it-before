@@ -13,9 +13,9 @@ class Votes extends Component {
         const votedDown = (changedVotes < 0)
         return (
             <div className="votes">
-                <p className={`votesUpArrow ${ votedUp ? 'votedUp': ''}`} id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
+                <p className={`votesArrow votesUpArrow ${ votedUp ? 'votedUp': ''}`} id="upArrow" onClick={(changedVotes > 0) ? null : this.changeVote} >⇧</p>
                 <p className={`votesCount ${ votedUp ? 'votedUp': (votedDown ? 'votedDown' : '')}`} >{votes}</p>
-                <p className={`votesDownArrow ${ votedDown ? 'votedDown': ''}`} id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇧</p>
+                <p className={`votesArrow votesDownArrow ${ votedDown ? 'votedDown': ''}`} id="downArrow" onClick={(changedVotes < 0) ? null : this.changeVote} >⇧</p>
             </div>
         );
     }

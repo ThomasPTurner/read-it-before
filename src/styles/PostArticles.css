@@ -9,7 +9,8 @@
     ". titleInput titleInput"
     ". bodyLabel ."
     ". bodyInput bodyInput"
-    ". badInput postButton"
+    ". badInput postButton";
+    max-width: 99vw
 }
 .postButton {
     margin-top: 3px;

@@ -1,5 +1,5 @@
 .PreviousNext {
-    margin-top: 10px;
+    margin: 10px 0 10px 0;
     display: grid;
     grid-template-columns: 5em auto 5em; 
     grid-template-areas: 'previous . next'

@@ -11,6 +11,7 @@
     width: 10em;
     height: 1.5em;
     vertical-align: bottom;
+    margin-left: 3px;
 }
 
 .commentBodyLabel {

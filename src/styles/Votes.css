@@ -11,28 +11,34 @@
     margin-left: 5px;
     margin-right: 5px;
 }
+
 .votesCount {
     grid-area: voteCount;
     margin: 0;
     line-height: 100%
 }
 
-.votesUpArrow {
-    padding: 0.4em ; 
-    grid-area: upArrow;
+.votesArrow {
     margin: 0;
+    padding: 0.4em; 
 }
 
-.votesDownArrow {
-    padding: 0.4em; 
-    grid-area: downArrow;
-    margin: 0;
-    transform: rotate(180deg);
-    padding-right:8px;
+.votesArrow:hover {
+    cursor: pointer;
+}
+
+.votesUpArrow {
+    grid-area: upArrow;
 }
 
 .votedUp {
     color: red
+}
+
+.votesDownArrow {
+    grid-area: downArrow;
+    transform: rotate(180deg);
+    padding-right:8px;
 }
 
 .votedDown {

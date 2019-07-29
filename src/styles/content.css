@@ -5,7 +5,7 @@
     flex-direction: row;
     justify-content: space-evenly;
     overflow-y: auto;
-    max-height: 82vh
+    max-height: 84vh
   }
   
   .card {
